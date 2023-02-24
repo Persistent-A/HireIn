@@ -57,7 +57,7 @@ nav li:hover {
   height: 35vh;
   display: flex;
   justify-content: center;
-  align-items: end;
+  align-items: flex-end;
   /* background-color: white; */
   
 }
