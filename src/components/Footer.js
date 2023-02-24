@@ -13,7 +13,7 @@ const Footer = () => {
         <div>
             &copy; Developed By HireIn Team
         </div>
-        <div>
+        <div className='follow-us'>
             <div>
                 Follow Us
             </div>
