@@ -75,4 +75,5 @@ nav li:hover {
   width: 20%;
   height: 40px;
   border-radius: 25px;
+  border: 1px solid black;
 }
