@@ -7,6 +7,7 @@ const jwt = require('jsonwebtoken')
 const registerEmployer = asyncHandler(async(req, res) => {
     const {first_name, last_name, phone, email, password} = req.body
 
+
     if(!first_name || !last_name || !phone || !email || !password){
         res.status(400)
         throw new Error("Please enter all the fields!")
@@ -31,7 +32,7 @@ const registerEmployer = asyncHandler(async(req, res) => {
 
     if(!employer){
         res.status(400)
-        throw new Error("Account not registered")
+        throw new Error("Account not created")
     }
 
     res.status(201).json({
@@ -42,8 +43,6 @@ const registerEmployer = asyncHandler(async(req, res) => {
         email: employer.email,
         token: await generateToken(employer.id)
     })
-    
-    res.status(201).json({message: "You are registered"})
 })
 
 //To login a Employer

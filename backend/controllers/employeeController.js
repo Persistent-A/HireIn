@@ -42,14 +42,12 @@ const registerEmployee = asyncHandler(async(req, res) => {
         email: employee.email,
         token: await generateToken(employee.id)
     })
-    
-    res.status(201).json({message: "You are registered"})
 })
 
 //To login an Employee
 const loginEmployee = asyncHandler(async(req, res) => {
     const {email, password} = req.body
-    
+    console.log(req.body)
     if(!email || !password){
         res.status(400)
         throw new Error("Please enter all the fields")
