@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from 'react-redux'
-import { registerEmployer } from "../features/auth/authSlice"
+import { registerEmployee } from "../features/auth/authSlice"
 
 const RegisterForm = () => {
 
@@ -34,7 +34,7 @@ const RegisterForm = () => {
       password
     }
 
-    dispatch(registerEmployer(userData))
+    dispatch(registerEmployee(userData))
   }
 
   return (
@@ -49,5 +49,4 @@ const RegisterForm = () => {
     </form>
   )
 }
-
 export default RegisterForm

@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { useDispatch } from 'react-redux'
-import { loginEmployer } from "../features/auth/authSlice"
+import { loginEmployee } from "../features/auth/authSlice"
 
 const LoginForm = () => {
   const [formData, setFormData] = useState({
@@ -27,7 +27,7 @@ const LoginForm = () => {
       password
     }
 
-    dispatch(loginEmployer(userData))
+    dispatch(loginEmployee(userData))
   }
 
   return (

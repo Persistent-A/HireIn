@@ -29,6 +29,9 @@ const employeeSchema = mongoose.Schema({
     },
     address: {
         type: Object,
+    },
+    specialization: {
+        type: String,
     }
 },
 {

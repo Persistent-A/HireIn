@@ -1,7 +1,7 @@
 import '../Styles/header.css'
 
 
-import { Link, useNavigate } from 'react-router-dom'
+import { Link} from 'react-router-dom'
 
 import Hamburger from "./Hamburger"
 import hireinLogo from "../Images/hirein_logo.png"
@@ -21,10 +21,10 @@ const Header = () => {
         <div className="drawing-menu">
           <div className="translucent" onClick={toggleHamburger}></div>
           <ul className="menu">
-            <li onClick={toggleHamburger}><a href='google' rel='noreferrer'><Link to="/employee-register">Employees </Link> </a></li>
-            <li onClick={toggleHamburger}><a href='google' rel='noreferrer'><Link to="/employer-register">Employers </Link> </a></li>
-            <li onClick={toggleHamburger}><a href='google' rel='noreferrer'><Link to="">Services  </Link> </a></li>
-            <li onClick={toggleHamburger}><a href='google' rel='noreferrer'><Link to="">Contact Us</Link> </a></li>
+            <li onClick={toggleHamburger}><Link to="/employee-register">Employees </Link></li>
+            <li onClick={toggleHamburger}><Link to="/employer-register">Employers </Link></li>
+            <li onClick={toggleHamburger}><Link to="/admin">Admin</Link> </li>
+            <li onClick={toggleHamburger}><Link to="">Services  </Link> </li>
           </ul>
         </div>
     </header>

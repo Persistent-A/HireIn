@@ -4,8 +4,8 @@ import { useState } from "react"
 import { useEffect } from 'react'
 import {useSelector, useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import RegisterForm from "./RegisterForm"
-import LoginForm from "./LoginForm"
+import EmployeeRegisterForm from "./EmployeeRegisterForm"
+import EmployeeLoginForm from "./EmployeeLoginForm"
 import { reset } from '../features/auth/authSlice'
 
 const EmployerRegister = () => {
@@ -47,7 +47,7 @@ const EmployerRegister = () => {
   }
 
   return (
-    <div className="register-signup">
+    <div className="register-signup" style={{backgroundColor: "red"}}>
       <div className="employer-feedback">
         <p>Employer Feedback</p>
         <div>
@@ -71,8 +71,8 @@ const EmployerRegister = () => {
             <button onClick={showSignInForm}>SignIn</button>
           </div>
         }
-        { isSignUp && <RegisterForm/>}
-        { isSignIn && <LoginForm/>}
+        { isSignUp && <EmployeeRegisterForm style={{backgroundColor: "red"}}/>}
+        { isSignIn && <EmployeeLoginForm/>}
         <div>
           {(isSignIn || isSignUp) && <p>or</p>}
           { isSignIn && <button className="additional-form-togglers" onClick={showSignUpForm}>SignUp</button>}
