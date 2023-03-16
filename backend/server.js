@@ -14,6 +14,7 @@ app.use(express.urlencoded({extended : true}))
 
 app.use('/employers', require('./routes/employerRoutes'))
 app.use('/employees', require('./routes/employeeRoutes'))
+app.use('/admin', require('./routes/adminRoutes'))
 app.use(errorHandler)
 
 app.listen(PORT, () => console.log(`Server is running at ${PORT}`))
