@@ -1,18 +1,26 @@
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
+
 //Importing components
 import Header from "./components/Header"
 import Main from "./components/Main"
 import Footer from "./components/Footer";
 import AllFeaturedEmployee from "./components/AllFeaturedEmployee";
-import Login from "./components/Login";
+// import Login from "./components/Login";
+import EmployerRegister from "./components/EmployerRegister";
 
 function App() {
   return (
     <div className="App">
-      <Header/>
-      <Main/>
+      <Router>
+        <Header/>
+        <Routes>
+          <Route path='/employer-register' element={<EmployerRegister />} />
+        </Routes>
+        <Footer/>
+      </Router>
+      {/* <Main/>
       <AllFeaturedEmployee/>
-      <Login />
-      <Footer/>
+      <Login /> */}
     </div>
   );
 }
