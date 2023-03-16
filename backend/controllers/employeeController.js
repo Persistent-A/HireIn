@@ -55,7 +55,7 @@ const loginEmployee = asyncHandler(async(req, res) => {
         throw new Error("Please enter all the fields")
     }
 
-    const employee = await Employer.findOne({email})
+    const employee = await Employee.findOne({email})
 
     if(employee && await bcrypt.compare(password, employee.password)){
         res.status(200).json({
