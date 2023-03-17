@@ -78,6 +78,18 @@
     background-color: transparent;
 }
 
+.forgot-pass {
+    background-color: transparent;
+    font-size: 5px;
+    text-decoration: underline;
+    color: blue;
+    border: none;
+}
+
+.forgot-pass:hover {
+    cursor: pointer;
+}
+
 @media only screen and (min-width: 700px) {
     .register-signup {
         flex-direction: row;

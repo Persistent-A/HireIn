@@ -18,7 +18,7 @@ const EmployerDashboard = () => {
     const Logout = () => {
         dispatch(logout())  
         dispatch(reset())
-        navigate('/home')
+        navigate('/employee-register')
     }
 
 

@@ -50,6 +50,10 @@ const EmployerRegister = () => {
       navigate('/employer-dashboard')
     }
 
+    if(!employee) {
+      navigate('/employee-register')
+    }
+
     dispatch(reset())
   }, [isError, isSuccess, message, employee, navigate, dispatch])
 
@@ -90,7 +94,7 @@ const EmployerRegister = () => {
           { isSignIn && <button className="additional-form-togglers" onClick={showSignUpForm}>SignUp</button>}
           { (isSignUp || isForgotPassword) && <button className="additional-form-togglers" onClick={showSignInForm}>SignIn</button>}
         </div>
-        {isSignIn && <button onClick={showForgotPassword}>forgot password?</button>}
+        {isSignIn && <button className="forgot-pass" onClick={showForgotPassword}>forgot password?</button>}
         <p>By Signing up, you agree to our Terms and Conditions.</p>
       </div>
     </div>
