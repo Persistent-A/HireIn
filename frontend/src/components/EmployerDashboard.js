@@ -11,7 +11,7 @@ const EmployerDashboard = () => {
     const { employer, employee, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
     // const { employee, employer, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
     // console.log(employer)
-    const { employer, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+    // const { employer, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
 
 
     const navigate = useNavigate()
