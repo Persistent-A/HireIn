@@ -5,10 +5,12 @@
 }
 
 .footer {
+    border: 1px solid red;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     height: 15vh;
+    background-color: rgb(152, 151, 151);
 }
 
 .follow-us > div:nth-of-type(2) > * {

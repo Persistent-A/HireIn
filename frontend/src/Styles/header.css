@@ -14,9 +14,8 @@
 }
 
 .logo {
-    height: 55%;
+    height: 40%;
 }
-
 
 .drawing-menu {
   display: flex;
@@ -47,15 +46,17 @@
 }
 
 .menu > li {
+  padding: 10px;
   width: 100%;
   margin-right: 0;
   list-style-type: none;
 }
 
 .menu > li:hover {
-  color: #404a4f;
   cursor: pointer;
+  color: white;
 }
+
 
 .menu > * {
   margin-bottom: 30px;
@@ -105,6 +106,16 @@
         margin: 0;
     }
 
+    .menu li:nth-of-type(1){
+      margin-right: 15px;
+    }
+
+    .menu > li:hover {
+      background-color: grey;
+      color: white;
+      border-radius: 10px 0px;
+    }
+    
 }
 
 
