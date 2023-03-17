@@ -96,4 +96,7 @@
         width: 400px;
         margin: 0;
     }
+    .signup > *{
+        background-color: rgb(148, 132, 132);
+    }
 }

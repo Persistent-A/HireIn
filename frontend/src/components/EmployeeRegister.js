@@ -58,7 +58,7 @@ const EmployerRegister = () => {
   }
 
   return (
-    <div className="register-signup" style={{backgroundColor: "red"}}>
+    <div className="register-signup">
       <div className="employer-feedback">
         <p>Employer Feedback</p>
         <div>
@@ -77,12 +77,12 @@ const EmployerRegister = () => {
             <p>Earn on your prowess</p>
         </div>
         { !isSignIn && !isSignUp && !isForgotPassword &&
-          <div>
+          <div className="signup">
             <button onClick={showSignUpForm}>SignUp</button>
             <button onClick={showSignInForm}>SignIn</button>
           </div>
         }
-        { isSignUp && <EmployeeRegisterForm style={{backgroundColor: "red"}}/>}
+        { isSignUp && <EmployeeRegisterForm/>}
         { isSignIn && <EmployeeLoginForm/>}
         { isForgotPassword && <ForgotPassword/>}
         <div>

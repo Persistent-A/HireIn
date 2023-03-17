@@ -1,3 +1,10 @@
+:root {
+    --foter-background: #f2f3f5;
+    --footer-logo: #5f6367;
+    --footer-text-primary: #2a2b2f;
+    --footer-text-secondary :#686c70;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -5,15 +12,101 @@
 }
 
 .footer {
-    border: 1px solid red;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    height: 15vh;
-    background-color: rgb(152, 151, 151);
+    padding: 20px;
+    background-color: var(--foter-background);
+    font-size: 15px;
+    font-family: sans-serif;
 }
 
-.follow-us > div:nth-of-type(2) > * {
-    margin-right: 15px;
-    font-size: 35px;
+.footer-social-links {
+    font-family: sans-serif;
+    color: var(--footer-text-primary);
+    margin: 20px 0;
+}
+
+.footer-social-links > div {
+    margin: 25px 0 20px 0;
+}
+
+.footer-social-links a {
+    color: var(--footer-text-primary);
+    font-size: 25px;
+    margin-right: 20px;   
+}
+
+.footer-web-links {
+    margin-top: 40px;
+}
+
+.footer-web-links > * {
+    color: var(--footer-text-secondary);
+    margin-bottom: 20px;
+}
+
+.footer-web-links ul > li {
+    list-style-type: none;
+    float: left;
+    margin: 0 20px 15px 0;
+}
+
+.footer-web-links > div > ul {
+    margin-bottom: 30px;
+}
+
+.footer-web-links a{
+    text-decoration: none;
+    color: var(--footer-text-secondary);
+}
+
+.footer-web-links > select {
+    border: none;
+    background-color: var(--footer-background);
+    clear: both;
+    overflow: hidden;
+}
+
+.footer > div:nth-last-of-type(1) {
+    margin-top: 20px;
+    color: var(--footer-text-primary);
+    font-size: 10px;
+}
+
+
+@media only screen and (min-width: 600px) {
+    .footer-social-links {
+        display: flex;
+        align-items: center;
+    }
+
+    .footer-social-links p {
+        margin-right: 30px;
+    }
+
+    .footer-web-links > * {
+        margin-bottom: 0;
+    }   
+
+    .footer-web-links {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer-web-links > div {
+        height: 10vh;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        flex-direction: row;
+    }
+
+    .footer-web-links > div > ul {
+        display: flex;
+        align-items: center;
+        margin: 0;
+    }
+
+    .footer-web-links > div > ul >li {
+        margin-bottom: 0;
+    }
 }
