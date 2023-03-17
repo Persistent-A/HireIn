@@ -2,10 +2,9 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 
 //Importing components
 import Header from "./components/Header"
-import Main from "./components/Main"
+// import Main from "./components/Main"
 import Footer from "./components/Footer";
-import AllFeaturedEmployee from "./components/AllFeaturedEmployee";
-// import Login from "./components/Login";
+// import AllFeaturedEmployee from "./components/AllFeaturedEmployee";
 import EmployerRegister from "./components/EmployerRegister";
 import EmployeeRegister from "./components/EmployeeRegister";
 import EmployerDashboard from './components/EmployerDashboard';
@@ -23,8 +22,8 @@ function App() {
         <Footer/>
       </Router>
       {/* <Main/>
-      <AllFeaturedEmployee/>
-      <Login /> */}
+      <AllFeaturedEmployee/> */}
+      
     </div>
   );
 }

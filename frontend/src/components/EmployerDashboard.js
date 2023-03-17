@@ -5,7 +5,7 @@ import EmployerProfile from "./EmployerProfile"
 const EmployerDashboard = () => {
 
     // const { employee, employer, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
-    console.log(employer)
+    // console.log(employer)
   
     return (
     <div className="employer-dashboard">
