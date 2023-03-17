@@ -46,7 +46,7 @@ const EmployerRegister = () => {
       console.log(message)
     }
 
-    if(isSuccess || employee) {
+    if(employee) {
       navigate('/employer-dashboard')
     }
 

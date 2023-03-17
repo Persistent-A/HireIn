@@ -81,10 +81,10 @@
 @media only screen and (min-width: 700px) {
     .register-signup {
         flex-direction: row;
-        align-items: flex-end;
+        align-items: center;
         width: 70%;
         margin: 0 auto;
-        min-height: 60vh;
+        min-height: 90vh;
     }
 
     .employer-feedback {

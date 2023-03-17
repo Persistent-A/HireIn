@@ -9,10 +9,7 @@ const EmployerDashboard = () => {
 
 
     const { employer, employee, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
-    // const { employee, employer, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
-    // console.log(employer)
-    const { employer, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
-
+    const user = employer ?  employer : employee
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -20,7 +17,7 @@ const EmployerDashboard = () => {
     const Logout = () => {
         dispatch(logout())  
         dispatch(reset())
-        navigate('/')
+        navigate('/home')
     }
 
 
@@ -45,7 +42,7 @@ const EmployerDashboard = () => {
     return (
     <div className="employer-dashboard">
         <div>
-            <p>Welcome {employer ? employer.first_name : employee.first_name}</p>
+            <p>Welcome {user ? user.first_name : user.first_name}</p>
             <button>Account</button>
             {employer && <button>Search Services</button>}
             <button onClick={Logout}>Logout</button>
