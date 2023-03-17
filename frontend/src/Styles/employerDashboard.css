@@ -40,20 +40,32 @@
     width: 100%;
     border: 1px solid black;
     display: flex;
-    
+    justify-content: center;
+    align-items: center;
     
 }
 
 .employer-profile {
+    background-color: rgb(242, 242, 242);
     border-radius: 20px;
-    width: 100%;
-    height: 100%;
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
-
-    margin-left: 500px;
+    align-items: center;
+    text-align: center;
     
+}
+
+.update-form {
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 30px;
+    /* align-items: center; */
 }
 
 

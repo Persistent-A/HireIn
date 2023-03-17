@@ -58,40 +58,38 @@ const EmployerProfile = () => {
     showProfile()
   }
   return (
-    <div className="profile">
+    <div >
       {isProfile &&
         <div className="employer-profile">
-          <p>{user.first_name} {user.last_name}</p>
-          <p>{user.phone}</p>
-          <p>{user.email}</p>
+          <p>{user.first_name} {user.last_name}</p><br/>
+          <p>{user.phone}</p><br/>
+          <p>{user.email}</p><br/>
           {user.address &&
             <div>
               Address:
-              <p>{user.address.apt}</p>
-              <p>{user.address.street}</p>
-              <p>{user.address.city}</p>
-              <p>{user.address.postal}</p>
-              <p>{user.address.province}</p>
+              <p>{user.address.apt} - {user.address.street} <br/>
+              {user.address.city}, {user.address.postal} <br/>
+              {user.address.province}</p>
             </div>
           }
-          <p>{user.age}</p>
-          <p>{user.gender}</p>
-          <p> Edit your Profile <MdOutlineEdit onClick={showEditForm}/></p>
+          <br/><p>Age: {user.age}</p>
+          <br/><p>Gender: {user.gender}</p>
+          <br/><button onClick={showEditForm}> Edit your Profile <MdOutlineEdit /></button>
         </div>
       }
       {
       isEditForm &&
       <div> 
-        <form onSubmit={updateProfile}>
-          {!user.age && <input name="age" value={age} placeholder="Age" type="number" onChange={OnChange}/>}
-          <input name="gender" value={gender} placeholder="Gender" onChange={OnChange}/>
+        <form onSubmit={updateProfile} className="update-form">
+          {!user.age && <div> Age:<input name="age" value={age} placeholder="Age" type="number" onChange={OnChange}/></div>}
+          <br/>Gender: <input name="gender" value={gender} placeholder="Gender" onChange={OnChange}/>
           {<div>
-              Address:
-              <input name="apt" value={apt} placeholder="Apartment"onChange={OnChange} />
-              <input name="street" value={street} placeholder="Street" onChange={OnChange}/>
-              <input name="city" value={city} placeholder="City" onChange={OnChange}/>
-              <input name="postal" value={postal} placeholder="Postal Code"onChange={OnChange} />
-              <input name="province" value={province}  placeholder="Province" onChange={OnChange}/>
+              Address:<br/>
+              <input name="apt" value={apt} placeholder="Apartment"onChange={OnChange} required/>
+              <input name="street" value={street} placeholder="Street" onChange={OnChange} required/><br/>
+              <input name="city" value={city} placeholder="City" onChange={OnChange} required/>
+              <input name="postal" value={postal} placeholder="Postal Code"onChange={OnChange} required/><br/>
+              <input name="province" value={province}  placeholder="Province" onChange={OnChange} required/><br/>
             </div>
           }
           <input type="submit" value="Update Profile" />
