@@ -7,7 +7,7 @@ import { reset, logout } from "../features/auth/authSlice"
 
 const EmployerDashboard = () => {
 
-    const { employer, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
+    const { employer, employee, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
 
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -24,14 +24,14 @@ const EmployerDashboard = () => {
           console.log(message)
         }
     
-        if(!employer) {
-          navigate('/')
+        if(!employer && !employee) {
+          navigate('/employee-register')
         }
     
         return () => {
           dispatch(reset())
         }
-      }, [employer, navigate, message, isError, isSuccess, dispatch])
+      }, [employer, navigate, employee, message, isError, isSuccess, dispatch])
 
       if(isLoading) {
         <h1>loading......</h1>
@@ -40,9 +40,9 @@ const EmployerDashboard = () => {
     return (
     <div className="employer-dashboard">
         <div>
-            <p>Welcome {employer.first_name}</p>
+            <p>Welcome {employer ? employer.first_name : employee.first_name}</p>
             <button>Account</button>
-            <button>Search Services</button>
+            {employer && <button>Search Services</button>}
             <button onClick={Logout}>Logout</button>
         </div>
 
