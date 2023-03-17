@@ -13,6 +13,7 @@ const ForgotPassword = () => {
         }
 
         dispatch(sendforgotPasswordLink(userData))
+        setEmail('')
     }
   return (
     <form onSubmit={onSubmit}>

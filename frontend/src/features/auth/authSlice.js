@@ -133,6 +133,12 @@ export const authSlice = createSlice({
             state.message = action.payload
             state.user = null
         })
+        .addCase(sendforgotPasswordLink.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.isError = false
+            state.message = action.payload
+            state.user = null
+        })
     }
 })
 
