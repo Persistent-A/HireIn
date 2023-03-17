@@ -34,6 +34,16 @@ export const loginEmployer = createAsyncThunk('employer/login', async(userData, 
     }
 })
 
+export const updateEmployer = createAsyncThunk('employer/update', async(userData, thunkAPI) => {
+    try {
+        return await authService.updateEmployer(userData)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message)
+                            || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 export const registerEmployee = createAsyncThunk('employee/register', async(userData, thunkAPI) => {
     try {
         return await authService.registerEmployee(userData)
@@ -52,6 +62,10 @@ export const loginEmployee = createAsyncThunk('employee/login', async(userData, 
                             || error.message || error.toString()
         return thunkAPI.rejectWithValue(message)
     }
+})
+
+export const logout = createAsyncThunk("logout", async() => {
+    return await authService.logout()
 })
 
 export const sendforgotPasswordLink = createAsyncThunk('employer/send-forgotpass-link', async(userData, thunkAPI) => {
@@ -84,6 +98,7 @@ export const authSlice = createSlice({
             state.isLoading = false
             state.isSuccess = true
             state.employer = action.payload
+            state.employee = null
         })
         .addCase(registerEmployer.rejected, (state, action) => {
             state.isLoading = false
@@ -98,6 +113,7 @@ export const authSlice = createSlice({
             state.isLoading = false
             state.isSuccess = true
             state.employer = action.payload
+            state.employee = null
         })
         .addCase(loginEmployer.rejected, (state, action) => {
             state.isLoading = false
@@ -112,6 +128,7 @@ export const authSlice = createSlice({
             state.isLoading = false
             state.isSuccess = true
             state.employee = action.payload
+            state.employer = null
         })
         .addCase(registerEmployee.rejected, (state, action) => {
             state.isLoading = false
@@ -126,6 +143,7 @@ export const authSlice = createSlice({
             state.isLoading = false
             state.isSuccess = true
             state.employee = action.payload
+            state.employer = null
         })
         .addCase(loginEmployee.rejected, (state, action) => {
             state.isLoading = false
@@ -133,11 +151,35 @@ export const authSlice = createSlice({
             state.message = action.payload
             state.employee = null
         })
+        .addCase(updateEmployer.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(updateEmployer.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.isSuccess = true
+            state.employer = action.payload
+            state.employee = null
+        })
+        .addCase(updateEmployer.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.message = action.payload
+            state.employer = null
+            state.employee = null
+        })
         .addCase(sendforgotPasswordLink.fulfilled, (state, action) => {
             state.isLoading = false
             state.isError = false
             state.message = action.payload
-            state.user = null
+            state.employer = null
+            state.employee = null
+        })
+        .addCase(logout.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.isError = false
+            state.isSuccess = true
+            state.employer = null
+            state.employee = null
         })
     }
 })

@@ -25,6 +25,10 @@ const EmployerRegister = () => {
       console.log(message)
     }
 
+    if(!employer) {
+      navigate('/employer-register')
+    }
+
     if(isSuccess || employer) {
       navigate('/employer-dashboard')
     }
