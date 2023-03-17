@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import {MdOutlineEdit} from "react-icons/md"
-import {updateEmployer} from "../features/auth/authSlice"
+import {updateEmployer, updateEmployee} from "../features/auth/authSlice"
 
 const EmployerProfile = () => {    
   
@@ -19,7 +19,9 @@ const EmployerProfile = () => {
   })
 
   const {age, gender, apt, street, city, postal, province} = profileData
-  const { employer } = useSelector((state) => state.auth)
+  const { employer, employee } = useSelector((state) => state.auth)
+
+  const user = employer ?  employer : employee
   const dispatch = useDispatch()
 
   const showEditForm = () => {
@@ -35,41 +37,53 @@ const EmployerProfile = () => {
   const OnChange = (e) => {
     setProfileData((prevState) => ({
       ...prevState,
-      [e.target.name]: [e.target.value]
+      [e.target.name]: e.target.value
     }))
   }
 
   const updateProfile = (e) => {
     e.preventDefault()
     const userData = {
-      age: age, 
-      gender: gender,
+      age, 
+      gender,
       address: {
-      apt: apt, 
-      street: street,
-      city: city,
-      postal: postal,
-      province: province
+      apt, 
+      street,
+      city,
+      postal,
+      province
       } 
     }
-
-    dispatch(updateEmployer(userData))
+    employer ? dispatch(updateEmployer(userData)) : dispatch(updateEmployee(userData))
+    showProfile()
   }
   return (
     <div>
       {isProfile &&
         <div className="employer-profile">
-          <p>{employer.first_name} {employer.last_name}</p>
-          <p>{employer.phone}</p>
-          <p>{employer.email}</p>
-          {!employer.address && <p> Complete your Profile <MdOutlineEdit onClick={showEditForm}/></p>}
+          <p>{user.first_name} {user.last_name}</p>
+          <p>{user.phone}</p>
+          <p>{user.email}</p>
+          {user.address &&
+            <div>
+              Address:
+              <p>{user.address.apt}</p>
+              <p>{user.address.street}</p>
+              <p>{user.address.city}</p>
+              <p>{user.address.postal}</p>
+              <p>{user.address.province}</p>
+            </div>
+          }
+          <p>{user.age}</p>
+          <p>{user.gender}</p>
+          <p> Edit your Profile <MdOutlineEdit onClick={showEditForm}/></p>
         </div>
       }
       {
       isEditForm &&
       <div> 
         <form onSubmit={updateProfile}>
-          {!employer.age && <input name="age" value={age} placeholder="Age" onChange={OnChange}/>}
+          {!user.age && <input name="age" value={age} placeholder="Age" type="number" onChange={OnChange}/>}
           <input name="gender" value={gender} placeholder="Gender" onChange={OnChange}/>
           {<div>
               Address:

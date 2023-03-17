@@ -70,10 +70,25 @@ const loginEmployee = asyncHandler(async(req, res) => {
     }
 })
 
+const updateEmployee = asyncHandler(async(req, res) => {
+    // console.log(req.body)
+    const employee = await Employee.findById(req.user._id)
+    if (!employee) {
+        res.status(401)
+        throw new Error('Not Authorised')
+    }
+    else {
+        const updatedEmployee = await Employee.findByIdAndUpdate(req.user._id, req.body, {
+            new: true
+        })
+        res.status(200). json(updatedEmployee)
+    }
+})
+
 const generateToken = async(id) => {
     return await jwt.sign({id}, process.env.JWT_SECRET, {
         expiresIn: '30d'
     })
 }
 
-module.exports = {registerEmployee, loginEmployee};
+module.exports = {registerEmployee, loginEmployee, updateEmployee};

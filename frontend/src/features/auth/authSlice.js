@@ -36,7 +36,8 @@ export const loginEmployer = createAsyncThunk('employer/login', async(userData, 
 
 export const updateEmployer = createAsyncThunk('employer/update', async(userData, thunkAPI) => {
     try {
-        return await authService.updateEmployer(userData)
+        const token = thunkAPI.getState().auth.employer.token
+        return await authService.updateEmployer(userData, token)
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message)
                             || error.message || error.toString()
@@ -57,6 +58,17 @@ export const registerEmployee = createAsyncThunk('employee/register', async(user
 export const loginEmployee = createAsyncThunk('employee/login', async(userData, thunkAPI) => {
     try {
         return await authService.loginEmployee(userData)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message)
+                            || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
+export const updateEmployee = createAsyncThunk('employee/update', async(userData, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.employer.token
+        return await authService.updateEmployee(userData, token)
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message)
                             || error.message || error.toString()
@@ -161,6 +173,22 @@ export const authSlice = createSlice({
             state.employee = null
         })
         .addCase(updateEmployer.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.message = action.payload
+            state.employer = null
+            state.employee = null
+        })
+        .addCase(updateEmployee.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(updateEmployee.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.isSuccess = true
+            state.employee = action.payload
+            state.employer = null
+        })
+        .addCase(updateEmployee.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload

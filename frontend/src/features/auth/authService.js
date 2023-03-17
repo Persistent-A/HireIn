@@ -6,6 +6,7 @@ const EMPLOYER_UPDATE_URI = '/employers/update'
 
 const EMPLOYEE_REGISTER_URI = '/employees/register'
 const EMPLOYEE_LOGIN_URI = '/employees/login'
+const EMPLOYEE_UPDATE_URI = '/employees/update'
 
 const SEND_PASS_LINK = '/forgot-pass/send-reset-pass-link'
 
@@ -21,7 +22,6 @@ const registerEmployer = async(userData) => {
 }
 
 const loginEmployer = async(userData) => {
-    console.log(userData)
     const response = await axios.post(EMPLOYER_LOGIN_URI, userData)
 
     if(response.data) {
@@ -31,9 +31,14 @@ const loginEmployer = async(userData) => {
     return response.data
 }
 
-const updateEmployer = async(userData) => {
-    const response = await axios.post(EMPLOYER_UPDATE_URI, userData)
-    console.log(response.data)
+const updateEmployer = async(userData, token) => {
+    const config ={
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.put(EMPLOYER_UPDATE_URI, userData, config)
     return response.data
 }
 
@@ -58,6 +63,18 @@ const loginEmployee = async(userData) => {
     return response.data
 }
 
+const updateEmployee = async(userData, token) => {
+    console.log(userData)
+    const config ={
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
+    }
+
+    const response = await axios.put(EMPLOYEE_UPDATE_URI, userData, config)
+    return response.data
+}
+
 const logout = async() => {
     localStorage.removeItem('employee')
     localStorage.removeItem('employer')
@@ -70,7 +87,7 @@ const sendforgotPasswordLink = async(userData) => {
 
 
 const authService = {
-    registerEmployer, loginEmployer, updateEmployer, registerEmployee, loginEmployee, sendforgotPasswordLink, logout
+    registerEmployer, loginEmployer, updateEmployer, registerEmployee, loginEmployee, updateEmployee, sendforgotPasswordLink, logout
 }
 
 export default authService
