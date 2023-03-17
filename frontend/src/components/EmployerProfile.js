@@ -58,7 +58,7 @@ const EmployerProfile = () => {
     showProfile()
   }
   return (
-    <div>
+    <div className="profile">
       {isProfile &&
         <div className="employer-profile">
           <p>{user.first_name} {user.last_name}</p>
