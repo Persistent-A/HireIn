@@ -7,23 +7,13 @@ import { useNavigate } from 'react-router-dom'
 import RegisterForm from "./RegisterForm"
 import LoginForm from "./LoginForm"
 import { reset } from '../features/auth/authSlice'
+import ForgotPassword from "./ForgotPassword"
 
 const EmployerRegister = () => {
 
   const [isSignIn, setSignInToggle] = useState(false)
   const [isSignUp, setSignUpToggle] = useState(false)
-
-  const showSignUpForm = (e) => {
-    e.preventDefault()
-    setSignUpToggle(true)
-    setSignInToggle(false)
-  }
-
-  const showSignInForm = (e) => {
-    e.preventDefault()
-    setSignUpToggle(false)
-    setSignInToggle(true)
-  }
+  const [isForgotPassword, setForgotPassword] = useState(false)
 
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -46,6 +36,30 @@ const EmployerRegister = () => {
     return <h1>Loading</h1>
   }
 
+  const showSignUpForm = (e) => {
+    e.preventDefault()
+    setSignUpToggle(true)
+    setSignInToggle(false)
+    setForgotPassword(false)
+  }
+
+  const showSignInForm = (e) => {
+    e.preventDefault()
+    setSignUpToggle(false)
+    setSignInToggle(true)
+    setForgotPassword(false)
+  }
+
+  const showForgotPassword = (e) => {
+    e.preventDefault()
+    setSignUpToggle(false)
+    setSignInToggle(false)
+    setForgotPassword(true)
+  }
+
+ 
+
+
   return (
     <div className="register-signup">
       <div className="employer-feedback">
@@ -65,7 +79,7 @@ const EmployerRegister = () => {
             <p>HireIn</p>
             <p>Earn on your prowess</p>
         </div>
-        { !isSignIn && !isSignUp &&
+        { !isSignIn && !isSignUp && !isForgotPassword &&
           <div>
             <button onClick={showSignUpForm}>SignUp</button>
             <button onClick={showSignInForm}>SignIn</button>
@@ -73,11 +87,13 @@ const EmployerRegister = () => {
         }
         { isSignUp && <RegisterForm/>}
         { isSignIn && <LoginForm/>}
+        { isForgotPassword && <ForgotPassword/>}
         <div>
-          {(isSignIn || isSignUp) && <p>or</p>}
+          {(isSignIn || isSignUp || isForgotPassword) && <p>or</p>}
           { isSignIn && <button className="additional-form-togglers" onClick={showSignUpForm}>SignUp</button>}
-          { isSignUp && <button className="additional-form-togglers" onClick={showSignInForm}>SignIn</button>}
+          { (isSignUp || isForgotPassword) && <button className="additional-form-togglers" onClick={showSignInForm}>SignIn</button>}
         </div>
+        {isSignIn && <button onClick={showForgotPassword}>forgot password?</button>}
         <p>By Signing up, you agree to our Terms and Conditions.</p>
       </div>
     </div>

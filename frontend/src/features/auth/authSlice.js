@@ -54,6 +54,16 @@ export const loginEmployee = createAsyncThunk('employee/login', async(userData, 
     }
 })
 
+export const sendforgotPasswordLink = createAsyncThunk('employer/send-forgotpass-link', async(userData, thunkAPI) => {
+    try {
+        return await authService.sendforgotPasswordLink(userData)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message)
+                            || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 export const authSlice = createSlice({
     name: 'auth',
     initialState,
