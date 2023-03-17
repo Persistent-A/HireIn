@@ -83,13 +83,13 @@ export const authSlice = createSlice({
         .addCase(registerEmployer.fulfilled, (state, action) => {
             state.isLoading = false
             state.isSuccess = true
-            state.user = action.payload
+            state.employer = action.payload
         })
         .addCase(registerEmployer.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
-            state.user = null
+            state.employer = null
         })
         .addCase(loginEmployer.pending, (state) => {
             state.isLoading = true
@@ -97,13 +97,13 @@ export const authSlice = createSlice({
         .addCase(loginEmployer.fulfilled, (state, action) => {
             state.isLoading = false
             state.isSuccess = true
-            state.user = action.payload
+            state.employer = action.payload
         })
         .addCase(loginEmployer.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
-            state.user = null
+            state.employer = null
         })
         .addCase(registerEmployee.pending, (state) => {
             state.isLoading = true
@@ -111,13 +111,13 @@ export const authSlice = createSlice({
         .addCase(registerEmployee.fulfilled, (state, action) => {
             state.isLoading = false
             state.isSuccess = true
-            state.user = action.payload
+            state.employee = action.payload
         })
         .addCase(registerEmployee.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
-            state.user = null
+            state.employee = null
         })
         .addCase(loginEmployee.pending, (state) => {
             state.isLoading = true
@@ -125,13 +125,13 @@ export const authSlice = createSlice({
         .addCase(loginEmployee.fulfilled, (state, action) => {
             state.isLoading = false
             state.isSuccess = true
-            state.user = action.payload
+            state.employee = action.payload
         })
         .addCase(loginEmployee.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
-            state.user = null
+            state.employee = null
         })
         .addCase(sendforgotPasswordLink.fulfilled, (state, action) => {
             state.isLoading = false
