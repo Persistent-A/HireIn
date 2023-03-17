@@ -8,6 +8,7 @@ import AllFeaturedEmployee from "./components/AllFeaturedEmployee";
 // import Login from "./components/Login";
 import EmployerRegister from "./components/EmployerRegister";
 import EmployeeRegister from "./components/EmployeeRegister";
+import EmployerDashboard from './components/EmployerDashboard';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path='/employer-register' element={<EmployerRegister />} />
           <Route path='/employee-register' element={<EmployeeRegister />} />
+          <Route path='/employer-dashboard' element={<EmployerDashboard />} />
         </Routes>
         <Footer/>
       </Router>

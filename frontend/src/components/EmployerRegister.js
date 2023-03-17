@@ -18,19 +18,19 @@ const EmployerRegister = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
 
-  const { user, isLoading, isSuccess, isError, message } = useSelector( (state) => state.auth )
+  const { employer, isLoading,  isError, isSuccess, message } = useSelector( (state) => state.auth )
 
   useEffect(() => {
     if(isError) {
       console.log(message)
     }
 
-    if(isSuccess || user) {
-      navigate('/employer-register')
+    if(isSuccess || employer) {
+      navigate('/employer-dashboard')
     }
 
     dispatch(reset())
-  }, [isError, isSuccess, message, user, navigate, dispatch])
+  }, [isError, isSuccess, message, employer, navigate, dispatch])
 
   if(isLoading) {
     return <h1>Loading</h1>
