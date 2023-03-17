@@ -12,6 +12,7 @@
 }
 
 .footer {
+    margin-top: 70px;
     padding: 20px;
     background-color: var(--foter-background);
     font-size: 15px;
