@@ -17,3 +17,22 @@
     align-items: flex-start;
     padding: 20px;
 }
+
+.employer-dashboard-extention {
+    width: 100%;
+    border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.employer-profile {
+    background-color: rgb(241, 241, 241);
+    border-radius: 20px;
+    width: 50%;
+    height: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}

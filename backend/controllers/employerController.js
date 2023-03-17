@@ -24,10 +24,13 @@ const registerEmployer = asyncHandler(async(req, res) => {
 
     const employer = await Employer.create({
         first_name, 
-        last_name, 
+        last_name,
+        age: null,
+        gender: null, 
         phone, 
         email, 
-        password: hashedPassword
+        password: hashedPassword,
+        address: {}
     })
 
     if(!employer){
@@ -39,8 +42,11 @@ const registerEmployer = asyncHandler(async(req, res) => {
         _id: employer.id,
         first_name: employer.first_name,
         last_name: employer.last_name,
+        age: employer.age,
+        gender: employer.gender, 
         phone: employer.phone,
         email: employer.email,
+        address: employer.address,
         token: await generateToken(employer.id)
     })
 })
@@ -61,15 +67,33 @@ const loginEmployer = asyncHandler(async(req, res) => {
             _id: employer.id,
             first_name: employer.first_name,
             last_name: employer.last_name,
+            age: employer.age,
+            gender: employer.gender, 
             phone: employer.phone,
             email: employer.email,
+            address: employer.address,
             token: await generateToken(employer.id)
         })
     }else{
         res.status(400)
         throw new Error("User not found")
     }
-})
+    })
+
+    const updateEmployer = asyncHandler(async(req, res) => {
+        console.log(req.body)
+        const employer = await Employer.findById(req.user._id)
+        if (!employer) {
+            res.status(401)
+            throw new Error('Not Authorised')
+        }
+        else {
+            const updatedEmployer = await Employer.findByIdAndUpdate(req.user._id, req.body, {
+                new: true
+            })
+            res.status(200). json(updatedEmployer)
+        }
+    })
 
 const generateToken = async(id) => {
     return await jwt.sign({id}, process.env.JWT_SECRET, {
@@ -77,4 +101,4 @@ const generateToken = async(id) => {
     })
 }
 
-module.exports = {registerEmployer, loginEmployer};
+module.exports = {registerEmployer, loginEmployer, updateEmployer};
