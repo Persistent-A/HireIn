@@ -6,7 +6,7 @@ const EMPLOYER_LOGIN_URI = '/employers/login'
 const EMPLOYEE_REGISTER_URI = '/employees/register'
 const EMPLOYEE_LOGIN_URI = '/employees/login'
 
-const SEND_PASS_LINK = 
+const SEND_PASS_LINK = '/forgot-pass/send-reset-pass-link'
 
 const registerEmployer = async(userData) => {
     console.log(userData)
@@ -51,7 +51,8 @@ const loginEmployee = async(userData) => {
 }
 
 const sendforgotPasswordLink = async(userData) => {
-    const response = await axios.post(EMPLOYEE_LOGIN_URI, userData)
+    const response = await axios.post(SEND_PASS_LINK, userData)
+    return response.data
 }
 
 
