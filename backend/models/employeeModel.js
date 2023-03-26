@@ -28,7 +28,7 @@ const employeeSchema = mongoose.Schema({
         required: [true, 'Please enter your password']
     },
     address: {
-        type: Object,
+        type: String,
     },
     specialization: {
         type: String,
