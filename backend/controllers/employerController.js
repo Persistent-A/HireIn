@@ -30,7 +30,7 @@ const registerEmployer = asyncHandler(async(req, res) => {
         phone, 
         email, 
         password: hashedPassword,
-        address: {}
+        address: null,
     })
 
     if(!employer){
