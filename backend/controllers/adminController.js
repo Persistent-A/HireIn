@@ -5,6 +5,7 @@ const jwt = require('jsonwebtoken')
 
 //To login an Employee
 const loginAdmin = asyncHandler(async(req, res) => {
+    console.log(req.body)
     const {user_id, password} = req.body
     
     if(!user_id || !password){
@@ -13,6 +14,7 @@ const loginAdmin = asyncHandler(async(req, res) => {
     }
 
     const admin = await Admin.findOne({user_id})
+    console.log(admin)
 
     if(admin && await bcrypt.compare(password, admin.password)){
         res.status(200).json({

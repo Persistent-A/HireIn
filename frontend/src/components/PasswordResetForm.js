@@ -1,9 +1,7 @@
-// import path from 'path'
 import '../Styles/newPasswordLink.css'
 import {useState} from 'react'
-// import { useDispatch } from "react-redux"
 import { useParams } from 'react-router-dom'
-import axios, {Axios} from 'axios'
+import axios from 'axios'
 
 function PasswordResetForm() {
   const { token } = useParams()
@@ -22,8 +20,6 @@ function PasswordResetForm() {
     }))
   }
 
-  // const dispatch = useDispatch()
-
   const handleSubmit = async(e) => {
     e.preventDefault();
     if(passwordObject.new_password === passwordObject.confirm_password) {
@@ -41,7 +37,7 @@ function PasswordResetForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='reset-form'>
       <h2>Password Reset</h2>
       <label>
         New Password:

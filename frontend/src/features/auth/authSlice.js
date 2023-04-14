@@ -3,10 +3,12 @@ import authService from './authService'
 
 const employee = JSON.parse(localStorage.getItem('employee'))
 const employer = JSON.parse(localStorage.getItem('employer'))
+const admin = JSON.parse(localStorage.getItem('admin'))
 
 const initialState = {
     employee: employee ? employee : null,
     employer: employer ? employer : null,
+    admin: admin ? admin : null,
     isLoading: false,
     isError: false,
     isSuccess: false,
@@ -77,6 +79,16 @@ export const updateEmployee = createAsyncThunk('employee/update', async(userData
     }
 })
 
+export const loginAdmin = createAsyncThunk('admin/login', async(userData, thunkAPI) => {
+    try {
+        return await authService.loginAdmin(userData)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message)
+                            || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
+
 export const logout = createAsyncThunk("logout", async() => {
     return await authService.logout()
 })
@@ -112,12 +124,14 @@ export const authSlice = createSlice({
             state.isSuccess = true
             state.employer = action.payload
             state.employee = null
+            state.admin = null
         })
         .addCase(registerEmployer.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
             state.employer = null
+            state.admin = null
         })
         .addCase(loginEmployer.pending, (state) => {
             state.isLoading = true
@@ -127,12 +141,14 @@ export const authSlice = createSlice({
             state.isSuccess = true
             state.employer = action.payload
             state.employee = null
+            state.admin = null
         })
         .addCase(loginEmployer.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
             state.employer = null
+            state.admin = null
         })
         .addCase(registerEmployee.pending, (state) => {
             state.isLoading = true
@@ -142,12 +158,14 @@ export const authSlice = createSlice({
             state.isSuccess = true
             state.employee = action.payload
             state.employer = null
+            state.admin = null
         })
         .addCase(registerEmployee.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
             state.employee = null
+            state.admin = null
         })
         .addCase(loginEmployee.pending, (state) => {
             state.isLoading = true
@@ -157,12 +175,14 @@ export const authSlice = createSlice({
             state.isSuccess = true
             state.employee = action.payload
             state.employer = null
+            state.admin = null
         })
         .addCase(loginEmployee.rejected, (state, action) => {
             state.isLoading = false
             state.isError = true
             state.message = action.payload
             state.employee = null
+            state.admin = null
         })
         .addCase(updateEmployer.pending, (state) => {
             state.isLoading = true
@@ -172,6 +192,7 @@ export const authSlice = createSlice({
             state.isSuccess = true
             state.employer = action.payload
             state.employee = null
+            state.admin = null
         })
         .addCase(updateEmployer.rejected, (state, action) => {
             state.isLoading = false
@@ -179,6 +200,7 @@ export const authSlice = createSlice({
             state.message = action.payload
             state.employer = null
             state.employee = null
+            state.admin = null
         })
         .addCase(updateEmployee.pending, (state) => {
             state.isLoading = true
@@ -188,6 +210,7 @@ export const authSlice = createSlice({
             state.isSuccess = true
             state.employee = action.payload
             state.employer = null
+            state.admin = null
         })
         .addCase(updateEmployee.rejected, (state, action) => {
             state.isLoading = false
@@ -195,6 +218,7 @@ export const authSlice = createSlice({
             state.message = action.payload
             state.employer = null
             state.employee = null
+            state.admin = null
         })
         .addCase(sendforgotPasswordLink.fulfilled, (state, action) => {
             state.isLoading = false
@@ -202,6 +226,25 @@ export const authSlice = createSlice({
             state.message = action.payload
             state.employer = null
             state.employee = null
+            state.admin = null
+        })
+        .addCase(loginAdmin.pending, (state) => {
+            state.isLoading = true
+        })
+        .addCase(loginAdmin.fulfilled, (state, action) => {
+            state.isLoading = false
+            state.isSuccess = true
+            state.admin = action.payload
+            state.employee = null
+            state.employer = null
+        })
+        .addCase(loginAdmin.rejected, (state, action) => {
+            state.isLoading = false
+            state.isError = true
+            state.message = action.payload
+            state.employer = null
+            state.employee = null
+            state.admin = null
         })
         .addCase(logout.fulfilled, (state, action) => {
             state.isLoading = false
@@ -209,6 +252,7 @@ export const authSlice = createSlice({
             state.isSuccess = true
             state.employer = null
             state.employee = null
+            state.admin = null
         })
     }
 })
