@@ -8,6 +8,8 @@ const EMPLOYEE_REGISTER_URI = '/employees/register'
 const EMPLOYEE_LOGIN_URI = '/employees/login'
 const EMPLOYEE_UPDATE_URI = '/employees/update'
 
+const ADMIN_LOGIN_URI = '/admin/login'
+
 const SEND_PASS_LINK = '/forgot-pass/send-reset-pass-link'
 
 const registerEmployer = async(userData) => {
@@ -26,6 +28,8 @@ const loginEmployer = async(userData) => {
 
     if(response.data) {
         localStorage.setItem('employer', JSON.stringify(response.data))
+        localStorage.removeItem('employee')
+        localStorage.removeItem('admin')
     }
 
     return response.data
@@ -58,6 +62,8 @@ const loginEmployee = async(userData) => {
 
     if(response.data) {
         localStorage.setItem('employee', JSON.stringify(response.data))
+        localStorage.removeItem('employer')
+        localStorage.removeItem('admin')
     }
 
     return response.data
@@ -75,6 +81,18 @@ const updateEmployee = async(userData, token) => {
     return response.data
 }
 
+const loginAdmin = async(userData) => {
+    console.log(userData)
+    const response = await axios.post(ADMIN_LOGIN_URI, userData)
+
+    if(response.data) {
+        localStorage.setItem('admin', JSON.stringify(response.data))
+        localStorage.removeItem('employee')
+        localStorage.removeItem('employer')
+    }
+    return response.data
+}
+
 const logout = async() => {
     localStorage.removeItem('employee')
     localStorage.removeItem('employer')
@@ -87,7 +105,7 @@ const sendforgotPasswordLink = async(userData) => {
 
 
 const authService = {
-    registerEmployer, loginEmployer, updateEmployer, registerEmployee, loginEmployee, updateEmployee, sendforgotPasswordLink, logout
+    registerEmployer, loginEmployer, updateEmployer, registerEmployee, loginEmployee, updateEmployee, loginAdmin, sendforgotPasswordLink, logout
 }
 
 export default authService

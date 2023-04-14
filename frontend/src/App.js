@@ -9,6 +9,8 @@ import EmployerRegister from "./components/EmployerRegister";
 import EmployeeRegister from "./components/EmployeeRegister";
 import EmployerDashboard from './components/EmployerDashboard';
 import PasswordResetForm from './components/PasswordResetForm';
+import AdminLoginForm from './components/AdminLoginForm';
+import AdminDashboard from './components/AdminDashboard';
 
 function App() {
   return (
@@ -21,6 +23,8 @@ function App() {
           <Route path='/employer-register' element={<EmployerRegister />} />
           <Route path='/employee-register' element={<EmployeeRegister />} />
           <Route path='/employer-dashboard' element={<EmployerDashboard />} />
+          <Route path='/admin' element={<AdminLoginForm/>} />
+          <Route path='/admin-dashboard' element={<AdminDashboard/>} />
         </Routes>
         <Footer/>
       </Router>
