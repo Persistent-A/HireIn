@@ -3,6 +3,7 @@ const Employees = require("../models/employeeModel")
 const Employers = require("../models/employerModel")
 const jwt = require("jsonwebtoken")
 const nodemailer = require("nodemailer")
+const bcrypt = require('bcryptjs')
 
 const sendResetPassLink = asyncHandler(async (req, res) => {
     const { email } = req.body;
@@ -17,9 +18,10 @@ const sendResetPassLink = asyncHandler(async (req, res) => {
       }
       
 
-      const token = generateToken(employee ? employee._id : employer._id)
+      const token = await generateToken(employee ? employee._id : employer._id)
+      console.log(token)
      
-      const link = `http://localhost:5004/reset-password/${token}`;
+      const link = `http://localhost:5005/reset-password/${token}`;
       
       var transporter = nodemailer.createTransport({
         service: "gmail",
@@ -48,12 +50,36 @@ const sendResetPassLink = asyncHandler(async (req, res) => {
     }
   });
 
+  const resetPassword = asyncHandler(async(req, res) => {
+
+    const token = req.headers.authorization.split(' ')[1]
+    const decoded = jwt.verify(token, process.env.JWT_SECRET)
+
+    const salt = await bcrypt.genSalt(10)
+    const hashedPassword = await bcrypt.hash(req.body.password, salt)
+
+    console.log(decoded)
+    let user
+    user = await Employers.findByIdAndUpdate(decoded.id, {password: hashedPassword}, {
+      new: true
+    }).select(-decoded.password)
+
+    if(!user) {
+      user = await Employees.findByIdAndUpdate(decoded.id, {password: hashedPassword}, {
+        new: true
+      }).select(-decoded.password)
+    }
+    console.log(user)
+    res.status(201).json({message: 'Password changed successfully'})
+  })
+
   const generateToken = async (id) => {
-    return await jwt.sign({id}, process.env.JWT_SECRET, {
+    return jwt.sign({id}, process.env.JWT_SECRET, {
       expiresIn: "30m"
     });
   }
 
   module.exports = {
     sendResetPassLink,
+    resetPassword
   }
