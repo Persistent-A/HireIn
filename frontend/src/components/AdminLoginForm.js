@@ -1,6 +1,6 @@
 import '../Styles/adminLoginForm.css'
 import React, { useEffect, useState } from 'react';
-import { loginAdmin, logout, reset } from '../features/auth/authSlice';
+import { loginAdmin} from '../features/auth/authSlice';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
