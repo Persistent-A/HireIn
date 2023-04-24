@@ -69,6 +69,94 @@
 }
 
 
+/* Employer Profile */
+
+.employer-profile {
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    /* width: 80%; */
+    margin: auto;
+  }
+  
+  .employer-profile p {
+    font-size: 18px;
+    margin: 5px 0;
+  }
+  
+  .employer-profile button {
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .employer-profile button:hover {
+    background-color: #3e8e41;
+  }
+  
+  .update-form {
+    background-color: #f7f7f7;
+    border-radius: 10px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    /* width: 80%; */
+    margin: auto;
+  }
+  
+  .update-form input[type="number"],
+  .update-form input[type="text"] {
+    background-color: #f0f0f0;
+    border: none;
+    border-radius: 5px;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin: 10px 0;
+    padding: 10px;
+    width: 100%;
+  }
+  
+  .update-form input[type="submit"] {
+    background-color: #04AA6D;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .update-form input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  .update-form button {
+    background-color: #c9302c;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .update-form button:hover {
+    background-color: #a82a24;
+  }
+  
+
 
 
 

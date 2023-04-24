@@ -32,13 +32,15 @@ const loginEmployer = async(userData) => {
 }
 
 const updateEmployer = async(userData, token) => {
-    const config ={
+    const config = {
         headers: {
             Authorization: `Bearer ${token}`
         }
     }
-
     const response = await axios.put(EMPLOYER_UPDATE_URI, userData, config)
+    if(response.data) {
+        localStorage.setItem('employer', JSON.stringify(response.data))
+    }
     return response.data
 }
 
@@ -64,14 +66,17 @@ const loginEmployee = async(userData) => {
 }
 
 const updateEmployee = async(userData, token) => {
-    console.log(userData)
     const config ={
         headers: {
             Authorization: `Bearer ${token}`
         }
     }
-
+    console.log(config)
+    console.log(userData)
     const response = await axios.put(EMPLOYEE_UPDATE_URI, userData, config)
+    if(response.data) {
+        localStorage.setItem('employee', JSON.stringify(response.data))
+    }
     return response.data
 }
 

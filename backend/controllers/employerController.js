@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 //To Register a Employer
 const registerEmployer = asyncHandler(async(req, res) => {
     const {first_name, last_name, phone, email, password} = req.body
-
+    
 
     if(!first_name || !last_name || !phone || !email || !password){
         res.status(400)
@@ -25,12 +25,18 @@ const registerEmployer = asyncHandler(async(req, res) => {
     const employer = await Employer.create({
         first_name, 
         last_name,
-        age: null,
-        gender: null, 
+        age: '',
+        gender: '', 
         phone, 
         email, 
         password: hashedPassword,
-        address: null,
+        address: {
+            apt: '',
+            street: '',
+            city: '',
+            postal: '',
+            province: '',
+        },
     })
 
     if(!employer){
@@ -81,7 +87,6 @@ const loginEmployer = asyncHandler(async(req, res) => {
     })
 
     const updateEmployer = asyncHandler(async(req, res) => {
-        console.log(req.body)
         const employer = await Employer.findById(req.user._id)
         if (!employer) {
             res.status(401)
@@ -91,12 +96,12 @@ const loginEmployer = asyncHandler(async(req, res) => {
             const updatedEmployer = await Employer.findByIdAndUpdate(req.user._id, req.body, {
                 new: true
             })
-            res.status(200). json(updatedEmployer)
+            res.status(200).json(updatedEmployer)
         }
     })
 
 const generateToken = async(id) => {
-    return await jwt.sign({id}, process.env.JWT_SECRET, {
+    return jwt.sign({id}, process.env.JWT_SECRET, {
         expiresIn: '30d'
     })
 }

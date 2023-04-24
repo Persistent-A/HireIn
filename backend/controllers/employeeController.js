@@ -23,10 +23,19 @@ const registerEmployee = asyncHandler(async(req, res) => {
 
     const employee = await Employee.create({
         first_name, 
-        last_name, 
+        last_name,
+        age: '',
+        gender: '',
         phone, 
         email, 
-        password: hashedPassword
+        password: hashedPassword,
+        address: {
+            apt: '',
+            street: '',
+            city: '',
+            postal: '',
+            province: ''
+        }
     })
 
     if(!employee){
@@ -40,6 +49,9 @@ const registerEmployee = asyncHandler(async(req, res) => {
         last_name: employee.last_name,
         phone: employee.phone,
         email: employee.email,
+        address: employee.address,
+        age: employee.age,
+        gender: employee.age,
         token: await generateToken(employee.id)
     })
 })
@@ -75,9 +87,8 @@ const loginEmployee = asyncHandler(async(req, res) => {
 })
 
 const updateEmployee = asyncHandler(async(req, res) => {
-    
+    console.log(req.body)
     const employee = await Employee.findById(req.user._id)
-    console.log(employee)
     if (!employee) {
         res.status(401)
         throw new Error('Not Authorised')
@@ -87,12 +98,12 @@ const updateEmployee = asyncHandler(async(req, res) => {
             new: true
         })
         console.log(updatedEmployee)
-        res.status(200). json(updatedEmployee)
+        res.status(200).json(updatedEmployee)
     }
 })
 
 const generateToken = async(id) => {
-    return await jwt.sign({id}, process.env.JWT_SECRET, {
+    return jwt.sign({id}, process.env.JWT_SECRET, {
         expiresIn: '30d'
     })
 }
