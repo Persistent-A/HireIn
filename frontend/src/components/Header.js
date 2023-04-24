@@ -16,7 +16,9 @@ const toggleHamburger = () => {
 const Header = () => {
   return (
     <header className="header">
-        <img src={hireinLogo} alt="" className="logo"/>
+      
+        <img src={hireinLogo} alt=""className="logo" />
+      
         <Hamburger/>
         <div className="drawing-menu">
           <div className="translucent" onClick={toggleHamburger}></div>
