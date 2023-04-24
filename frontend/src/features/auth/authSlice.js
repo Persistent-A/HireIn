@@ -70,7 +70,7 @@ export const loginEmployee = createAsyncThunk('employee/login', async(userData, 
 export const updateEmployee = createAsyncThunk('employee/update', async(userData, thunkAPI) => {
     console.log(userData)
     try {
-        const token = thunkAPI.getState().auth.employer.token
+        const token = thunkAPI.getState().auth.employee.token
         return await authService.updateEmployee(userData, token)
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message)
