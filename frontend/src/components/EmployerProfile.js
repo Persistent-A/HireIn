@@ -8,20 +8,13 @@ const EmployerProfile = () => {
   const [isEditForm, setEditForm] = useState(false)
   const [isProfile, setIsProfile] = useState(true)
 
-  const [profileData, setProfileData ] = useState({
-    age: "",
-    gender: "",
-    apt: "",
-    street: "",
-    city: "",
-    postal: "",
-    province: ""
-  })
-
-  const {age, gender, apt, street, city, postal, province} = profileData
   const { employer, employee } = useSelector((state) => state.auth)
-
   const user = employer ?  employer : employee
+  const [userData, setUserData] = useState({...user})
+
+  const {age, gender, address} = userData
+  const { apt, street, city, postal, province } = address
+
   const dispatch = useDispatch()
 
   const showEditForm = () => {
@@ -35,10 +28,19 @@ const EmployerProfile = () => {
   }
 
   const OnChange = (e) => {
-    setProfileData((prevState) => ({
+    if(e.target.name === 'gender' || e.target.name === 'age'){
+      setUserData((prevState) => ({
+        ...prevState,
+        [e.target.name]: e.target.value,
+      }))
+    }else {
+    setUserData((prevState) => ({
       ...prevState,
-      [e.target.name]: e.target.value
-    }))
+      address: {
+        ...prevState.address,
+        [e.target.name]: e.target.value
+      } 
+    }))}
   }
 
   const updateProfile = (e) => {
@@ -46,13 +48,7 @@ const EmployerProfile = () => {
     const userData = {
       age, 
       gender,
-      address: {
-      apt, 
-      street,
-      city,
-      postal,
-      province
-      } 
+      address
     }
     employer ? dispatch(updateEmployer(userData)) : dispatch(updateEmployee(userData))
     showProfile()
@@ -81,7 +77,7 @@ const EmployerProfile = () => {
       isEditForm &&
       <div> 
         <form onSubmit={updateProfile} className="update-form">
-          {!user.age && <div> Age:<input name="age" value={age} placeholder="Age" type="number" onChange={OnChange}/></div>}
+          <div> Age:<input name="age" value={age} placeholder="Age" type="number" onChange={OnChange}/></div>
           <br/>Gender: <input name="gender" value={gender} placeholder="Gender" onChange={OnChange}/>
           {<div>
               Address:<br/>

@@ -10,7 +10,7 @@ const employeeSchema = mongoose.Schema({
         required: [true, 'Please enter your last name']
     },
     age: {
-        type: Number,
+        type: String,
     },
     gender: {
         type: String,
@@ -28,7 +28,7 @@ const employeeSchema = mongoose.Schema({
         required: [true, 'Please enter your password']
     },
     address: {
-        type: String,
+        type: Object,
     },
     specialization: {
         type: String,
