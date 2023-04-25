@@ -36,7 +36,16 @@ export const loginEmployer = createAsyncThunk('employer/login', async(userData, 
     }
 })
 
-
+export const updateEmployer = createAsyncThunk('employer/update', async(userData, thunkAPI) => {
+    try {
+        const token = thunkAPI.getState().auth.employer.token
+        return await authService.updateEmployer(userData, token)
+    } catch (error) {
+        const message = (error.response && error.response.data && error.response.data.message)
+                            || error.message || error.toString()
+        return thunkAPI.rejectWithValue(message)
+    }
+})
 
 export const registerEmployee = createAsyncThunk('employee/register', async(userData, thunkAPI) => {
     try {
@@ -58,21 +67,10 @@ export const loginEmployee = createAsyncThunk('employee/login', async(userData, 
     }
 })
 
-export const updateEmployer = createAsyncThunk('employer/update', async(userData, thunkAPI) => {
-    try {
-        const token = thunkAPI.getState().auth.employer.token
-        return await authService.updateEmployer(userData, token)
-    } catch (error) {
-        const message = (error.response && error.response.data && error.response.data.message)
-                            || error.message || error.toString()
-        return thunkAPI.rejectWithValue(message)
-    }
-})
-
 export const updateEmployee = createAsyncThunk('employee/update', async(userData, thunkAPI) => {
-    console.log(userData)
     try {
         const token = thunkAPI.getState().auth.employee.token
+        console.log(token)
         return await authService.updateEmployee(userData, token)
     } catch (error) {
         const message = (error.response && error.response.data && error.response.data.message)

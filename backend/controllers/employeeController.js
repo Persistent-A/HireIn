@@ -87,7 +87,6 @@ const loginEmployee = asyncHandler(async(req, res) => {
 })
 
 const updateEmployee = asyncHandler(async(req, res) => {
-    console.log(req.body)
     const employee = await Employee.findById(req.user._id)
     if (!employee) {
         res.status(401)
@@ -97,8 +96,7 @@ const updateEmployee = asyncHandler(async(req, res) => {
         const updatedEmployee = await Employee.findByIdAndUpdate(req.user._id, req.body, {
             new: true
         })
-        console.log(updatedEmployee)
-        res.status(200).json(updatedEmployee)
+        res.status(200).json({...updatedEmployee._doc, token: await generateToken(updatedEmployee._id)})
     }
 })
 

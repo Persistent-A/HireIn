@@ -11,13 +11,10 @@ const EmployerDashboard = () => {
     const { employer, employee, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
     const user = employer ?  employer : employee
 
-    
-
     const navigate = useNavigate()
-    const dispatch = useDispatch()  
-
-
-    // dispatch(logout())  
+    const dispatch = useDispatch() 
+    
+    // dispatch(logout())   
 
     const Logout = () => {
         dispatch(logout())  
@@ -56,7 +53,6 @@ const EmployerDashboard = () => {
         <div className="employer-dashboard-extention">
             <EmployerProfile />
         </div>
-      
     </div>
   )
 }
