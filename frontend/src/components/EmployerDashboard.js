@@ -7,11 +7,8 @@ import { reset, logout } from "../features/auth/authSlice"
 
 const EmployerDashboard = () => {
 
-
     const { employer, employee, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
     const user = employer ?  employer : employee
-
-    
 
     const navigate = useNavigate()
     const dispatch = useDispatch()  
@@ -24,8 +21,7 @@ const EmployerDashboard = () => {
         dispatch(reset())
         navigate('/employee-register')
     }
-
-
+    
     useEffect( () => {
         if(isError){
           console.log(message)

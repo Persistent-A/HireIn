@@ -59,7 +59,6 @@ const registerEmployee = asyncHandler(async(req, res) => {
 //To login an Employee
 const loginEmployee = asyncHandler(async(req, res) => {
     const {email, password} = req.body
-    console.log(req.body)
     if(!email || !password){
         res.status(400)
         throw new Error("Please enter all the fields")
@@ -98,7 +97,7 @@ const updateEmployee = asyncHandler(async(req, res) => {
             new: true
         })
         console.log(updatedEmployee)
-        res.status(200).json(updatedEmployee)
+        res.status(200).json({...updatedEmployee._doc, token: await generateToken(updatedEmployee._id)})
     }
 })
 
