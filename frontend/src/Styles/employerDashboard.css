@@ -1,162 +1,177 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box ;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
+
+/* Employer Dashboard */
 
 .employer-dashboard {
-    display: flex;
-    height: 70vh;
+  display: flex;
+  height: 70vh;
 }
 
-.employer-dashboard > div:nth-of-type(1){
-    width: 250px;
-    display: flex;
-    flex-direction: column;
-    border: 1px solid black;
-    align-items: flex-start;
-    padding: 20px;
+.employer-dashboard > div:nth-of-type(1) {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid black;
+  align-items: flex-start;
+  padding: 20px;
 }
 
-.employer-dashboard > div:nth-of-type(1) > *{
-    margin: 20px;
+.employer-dashboard > div:nth-of-type(1) > * {
+  margin: 20px;
 }
 
 .employer-dashboard > div:nth-of-type(1) > button {
-    padding: 5px 20px;
-    border: 1px solid black;
-    border-radius: 10px;
-    font-size: 15px;
-    width: 100px;
+  padding: 5px 20px;
+  border: 1px solid black;
+  border-radius: 10px;
+  font-size: 15px;
+  width: 100px;
 }
 
 .employer-dashboard > div:nth-of-type(1) > button:hover {
-    cursor: pointer;
-    background-color: black;
-    color: white;
+  cursor: pointer;
+  background-color: black;
+  color: white;
 }
 
 .employer-dashboard-extention {
-    width: 100%;
-    border: 1px solid black;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
+  width: 100%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-
-.employer-profile {
-    background-color: rgb(242, 242, 242);
-    border-radius: 20px;
-    width: 500px;
-    height: 500px;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    
-}
-
-.update-form {
-    height: 200px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-bottom: 30px;
-    /* align-items: center; */
-}
-
 
 /* Employer Profile */
 
 .employer-profile {
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    /* width: 80%; */
-    margin: auto;
-  }
-  
-  .employer-profile p {
-    font-size: 18px;
-    margin: 5px 0;
-  }
-  
-  .employer-profile button {
-    background-color: #04AA6D;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .employer-profile button:hover {
-    background-color: #3e8e41;
-  }
-  
-  .update-form {
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
-    padding: 20px;
-    text-align: center;
-    /* width: 80%; */
-    margin: auto;
-  }
-  
-  .update-form input[type="number"],
-  .update-form input[type="text"] {
-    background-color: #f0f0f0;
-    border: none;
-    border-radius: 5px;
-    box-sizing: border-box;
-    font-size: 16px;
-    margin: 10px 0;
-    padding: 10px;
-    width: 100%;
-  }
-  
-  .update-form input[type="submit"] {
-    background-color: #04AA6D;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .update-form input[type="submit"]:hover {
-    background-color: #3e8e41;
-  }
-  
-  .update-form button {
-    background-color: #c9302c;
-    border: none;
-    border-radius: 5px;
-    color: white;
-    cursor: pointer;
-    font-size: 16px;
-    margin-top: 10px;
-    padding: 10px 20px;
-    transition: background-color 0.3s ease;
-  }
-  
-  .update-form button:hover {
-    background-color: #a82a24;
-  }
-  
+  background-color: #f7f7f7;
+  border-radius: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  text-align: center;
+  width: 500px;
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
+.employer-profile p {
+  font-size: 18px;
+  margin: 5px 0;
+}
 
+.employer-profile button {
+  background-color: #04AA6D;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
 
+.employer-profile button:hover {
+  background-color: #3e8e41;
+}
 
+/* UPDATE FORM */
+.update-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem;
+  background-color: #F7F7F7;
+  border-radius: 0.5rem;
+  width: 500px;
+}
+
+.update-form input[type="text"],
+.update-form input[type="number"] {
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border: none;
+  background-color: #F3F3F3;
+  font-size: 1rem;
+  width: 100%;
+}
+
+.update-form input[type="submit"],
+.update-form button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  font-weight: bold;
+  color: white;
+  background-color: #FF6B6B;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.update-form input[type="submit"]:hover,
+.update-form button:hover {
+  background-color: #F74444;
+}
+
+.update-form input[type="submit"]:active,
+.update-form button:active {
+  transform: scale(0.98);
+  background-color: #EE1B1B;
+}
+
+.update-form input::placeholder {
+  color: #B1B1B1;
+}
+
+.update-form label {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #4A4A4A;
+}
+
+.update-form div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+.update-form div:last-child {
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  gap: 1rem;
+}
+
+.update-form div:last-child input {
+  width: 8rem;
+}
+
+.update-form div:last-child button {
+  background-color: transparent;
+  border: none;
+  color: #FF6B6B;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.update-form div:last-child button:hover {
+  color: #F74444;
+}
+
+.update-form div:last-child button:active {
+  transform: scale(0.98);
+}

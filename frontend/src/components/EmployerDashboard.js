@@ -13,13 +13,12 @@ const EmployerDashboard = () => {
 
     const { employer, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
 
+
     const [services, setServices] = useState()
-
     const navigate = useNavigate()
-    const dispatch = useDispatch()  
-
-
-    // dispatch(logout())  
+    const dispatch = useDispatch() 
+    
+    // dispatch(logout())   
 
     const Logout = () => {
         dispatch(logout())  
@@ -52,6 +51,7 @@ const EmployerDashboard = () => {
   
     return (
     <div className="employer-dashboard">
+
       <div>
           <p>Welcome {employer ? employer.first_name : ""}</p>
           <Link to='/employer-dashboard/account/'>Account</Link>

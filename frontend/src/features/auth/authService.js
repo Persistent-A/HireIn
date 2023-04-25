@@ -13,7 +13,6 @@ const ADMIN_LOGIN_URI = '/admin/login'
 const SEND_PASS_LINK = '/forgot-pass/send-reset-pass-link'
 
 const registerEmployer = async(userData) => {
-    console.log(userData)
     const response = await axios.post(EMPLOYER_REGISTER_URI, userData)
 
     if (response.data) {
@@ -49,7 +48,6 @@ const updateEmployer = async(userData, token) => {
 }
 
 const registerEmployee = async(userData) => {
-    console.log(userData)
     const response = await axios.post(EMPLOYEE_REGISTER_URI, userData)
 
     if (response.data) {
@@ -77,8 +75,6 @@ const updateEmployee = async(userData, token) => {
             Authorization: `Bearer ${token}`
         }
     }
-    console.log(config)
-    console.log(userData)
     const response = await axios.put(EMPLOYEE_UPDATE_URI, userData, config)
     if(response.data) {
         localStorage.setItem('employee', JSON.stringify(response.data))
