@@ -28,6 +28,7 @@ const registerEmployee = asyncHandler(async(req, res) => {
         gender: '',
         phone, 
         email, 
+        specialization: '',
         password: hashedPassword,
         address: {
             apt: '',
@@ -52,6 +53,7 @@ const registerEmployee = asyncHandler(async(req, res) => {
         address: employee.address,
         age: employee.age,
         gender: employee.age,
+        specialization: employee.specialization,
         token: await generateToken(employee.id)
     })
 })
@@ -59,7 +61,6 @@ const registerEmployee = asyncHandler(async(req, res) => {
 //To login an Employee
 const loginEmployee = asyncHandler(async(req, res) => {
     const {email, password} = req.body
-    console.log(req.body)
     if(!email || !password){
         res.status(400)
         throw new Error("Please enter all the fields")
@@ -78,6 +79,7 @@ const loginEmployee = asyncHandler(async(req, res) => {
             age: employee.age,
             address: employee.address,
             gender: employee.gender,
+            specialization: employee.specialization,
             token: await generateToken(employee.id)
         })
     }else{
@@ -96,6 +98,7 @@ const updateEmployee = asyncHandler(async(req, res) => {
         const updatedEmployee = await Employee.findByIdAndUpdate(req.user._id, req.body, {
             new: true
         })
+
         res.status(200).json({...updatedEmployee._doc, token: await generateToken(updatedEmployee._id)})
     }
 })

@@ -1,16 +1,15 @@
 import { useState } from "react"
 import { useSelector, useDispatch } from "react-redux"
 import {MdOutlineEdit} from "react-icons/md"
-import {updateEmployer, updateEmployee} from "../features/auth/authSlice"
+import {updateEmployer} from "../features/auth/authSlice"
 
 const EmployerProfile = () => {    
   
   const [isEditForm, setEditForm] = useState(false)
   const [isProfile, setIsProfile] = useState(true)
 
-  const { employer, employee } = useSelector((state) => state.auth)
-  const user = employer ?  employer : employee
-  const [userData, setUserData] = useState({...user})
+  const { employer } = useSelector((state) => state.auth)
+  const [userData, setUserData] = useState({...employer})
 
   const {age, gender, address} = userData
   const { apt, street, city, postal, province } = address
@@ -50,26 +49,26 @@ const EmployerProfile = () => {
       gender,
       address
     }
-    employer ? dispatch(updateEmployer(userData)) : dispatch(updateEmployee(userData))
+    dispatch(updateEmployer(userData))
     showProfile()
   }
   return (
     <div>
       {isProfile &&
         <div className="employer-profile">
-          <p>{user.first_name} {user.last_name}</p><br/>
-          <p>{user.phone}</p><br/>
-          <p>{user.email}</p><br/>
-          {user.address &&
+          <p>{employer.first_name} {employer.last_name}</p><br/>
+          <p>{employer.phone}</p><br/>
+          <p>{employer.email}</p><br/>
+          {employer.address &&
             <div>
               Address:
-              <p>{user.address.apt} - {user.address.street} <br/>
-              {user.address.city}, {user.address.postal} <br/>
-              {user.address.province}</p>
+              <p>{employer.address.apt} - {employer.address.street} <br/>
+              {employer.address.city}, {employer.address.postal} <br/>
+              {employer.address.province}</p>
             </div>
           }
-          <br/><p>Age: {user.age}</p>
-          <br/><p>Gender: {user.gender}</p>
+          <br/><p>Age: {employer.age}</p>
+          <br/><p>Gender: {employer.gender}</p>
           <br/><button onClick={showEditForm}> Edit your Profile <MdOutlineEdit /></button>
         </div>
       }

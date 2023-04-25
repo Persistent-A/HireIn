@@ -8,6 +8,7 @@ import Footer from "./components/Footer";
 import EmployerRegister from "./components/EmployerRegister";
 import EmployeeRegister from "./components/EmployeeRegister";
 import EmployerDashboard from './components/EmployerDashboard';
+import EmployeeDashboard from './components/EmployeeDashboard';
 import PasswordResetForm from './components/PasswordResetForm';
 import AdminLoginForm from './components/AdminLoginForm';
 import AdminDashboard from './components/AdminDashboard';
@@ -22,15 +23,13 @@ function App() {
           <Route path='/reset-password/:token' element={<PasswordResetForm/>} />
           <Route path='/employer-register' element={<EmployerRegister />} />
           <Route path='/employee-register' element={<EmployeeRegister />} />
-          <Route path='/employer-dashboard' element={<EmployerDashboard />} />
+          <Route path='/employer-dashboard/*' element={<EmployerDashboard />} />
+          <Route path='/employee-dashboard' element={<EmployeeDashboard />} />
           <Route path='/admin' element={<AdminLoginForm/>} />
           <Route path='/admin-dashboard' element={<AdminDashboard/>} />
         </Routes>
         <Footer/>
       </Router>
-      
-      
-      
     </div>
   );
 }

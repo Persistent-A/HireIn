@@ -13,7 +13,6 @@ const protect = async(req, res, next) => {
             if (!req.user) {
                 req.user = await Employer.findById(decoded.id).select(-decoded.password)
             }
-            console.log(req.user)
             next()
         }
         catch(error){
