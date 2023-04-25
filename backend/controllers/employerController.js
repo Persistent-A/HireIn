@@ -96,7 +96,7 @@ const loginEmployer = asyncHandler(async(req, res) => {
             const updatedEmployer = await Employer.findByIdAndUpdate(req.user._id, req.body, {
                 new: true
             })
-            res.status(200).json(updatedEmployer)
+            res.status(200).json({...updatedEmployer._doc, token: await generateToken(updatedEmployer._id)})
         }
     })
 
