@@ -28,6 +28,7 @@ const registerEmployee = asyncHandler(async(req, res) => {
         gender: '',
         phone, 
         email, 
+        specialization: '',
         password: hashedPassword,
         address: {
             apt: '',
@@ -52,6 +53,7 @@ const registerEmployee = asyncHandler(async(req, res) => {
         address: employee.address,
         age: employee.age,
         gender: employee.age,
+        specialization: employee.specialization,
         token: await generateToken(employee.id)
     })
 })
@@ -77,6 +79,7 @@ const loginEmployee = asyncHandler(async(req, res) => {
             age: employee.age,
             address: employee.address,
             gender: employee.gender,
+            specialization: employee.specialization,
             token: await generateToken(employee.id)
         })
     }else{
