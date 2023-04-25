@@ -1,5 +1,6 @@
 const asyncHandler = require('express-async-handler')
 const Admin = require('../models/adminModel')
+const Services = require('../models/serviceModel')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
@@ -30,10 +31,31 @@ const loginAdmin = asyncHandler(async(req, res) => {
     }
 })
 
+const addService = asyncHandler(async(req, res) => {
+    const {service_name, service_description} = req.body
+    const service = await Services.create({
+        service_name,
+        service_description
+    })
+    if(service){
+        res.status(201).json({
+            message: 'Service Added'
+        })
+    }else{
+        res.status(400)
+        throw new Error('Error in adding Service')
+    }
+})
+
+const getServices = asyncHandler(async(req, res) => {
+  const services = await Services.find({});
+  res.status(200).json(services)
+})
+
 const generateToken = async(id) => {
     return await jwt.sign({id}, process.env.JWT_SECRET, {
         expiresIn: '30d'
     })
 }
 
-module.exports = {loginAdmin};
+module.exports = {loginAdmin, addService, getServices};
