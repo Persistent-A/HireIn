@@ -82,6 +82,18 @@ const updateEmployee = async(userData, token) => {
     return response.data
 }
 
+const searchEmployee = async(searchParams) => {
+    const specialization = searchParams.specialization
+    const response = await axios.get(`/employers/search/employee/${specialization}`)
+    return response.data
+}
+
+const searchIndividualEmployee = async(employeeId) => {
+    const response = await axios.get("/employee/display_individual_employee/" + employeeId)
+    console.log(response.data)
+    return response.data
+}
+
 const loginAdmin = async(userData) => {
     console.log(userData)
     const response = await axios.post(ADMIN_LOGIN_URI, userData)
@@ -106,7 +118,7 @@ const sendforgotPasswordLink = async(userData) => {
 
 
 const authService = {
-    registerEmployer, loginEmployer, updateEmployer, registerEmployee, loginEmployee, updateEmployee, loginAdmin, sendforgotPasswordLink, logout
+    registerEmployer, loginEmployer, updateEmployer, registerEmployee, loginEmployee, updateEmployee, searchEmployee, searchIndividualEmployee, loginAdmin, sendforgotPasswordLink, logout
 }
 
 export default authService
