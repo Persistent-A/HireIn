@@ -3,6 +3,29 @@ const Employee = require('../models/employeeModel')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 
+const getEmployees = asyncHandler(async(req, res) => {
+    const { specialization } = req.params
+    if (specialization.length === 0) {
+        return res.status(200).json([])
+    }
+
+    const preferredEmployees = await Employee.find(
+        {specialization: { $in: [new RegExp(specialization, 'i')]}},
+        {
+            password: 0,
+            age: 0,
+            address: 0,
+            phone: 0,
+            email: 0,
+            gender: 0,
+        }
+    )
+    res.status(200).json(preferredEmployees)
+    
+})
+
+
+
 //To Register an Employee
 const registerEmployee = asyncHandler(async(req, res) => {
     const {first_name, last_name, phone, email, password} = req.body
@@ -109,4 +132,4 @@ const generateToken = async(id) => {
     })
 }
 
-module.exports = {registerEmployee, loginEmployee, updateEmployee};
+module.exports = {registerEmployee, loginEmployee, updateEmployee, getEmployees};

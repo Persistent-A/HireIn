@@ -1,13 +1,14 @@
 import "../Styles/employerDashboard.css"
 import { useSelector, useDispatch } from "react-redux"
 import EmployerProfile from "./EmployerProfile"
-import ServicesList from "./ServicesList"
+// import ServicesList from "./ServicesList"
 import { useEffect, useState } from "react"
 import { Link, useNavigate } from "react-router-dom"
 import { reset, logout } from "../features/auth/authSlice"
 
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import axios from 'axios'
+import SearchSevices from "./SearchSevices"
 
 const EmployerDashboard = () => {
 
@@ -61,7 +62,7 @@ const EmployerDashboard = () => {
       <div className="employer-dashboard-extention">
         <Routes>
           <Route path='/account/' element={<EmployerProfile/>}/>
-          <Route path='/search-services/' element={<ServicesList services={services}/>} />
+          <Route path='/search-services/*' element={<SearchSevices/>} />
         </Routes>
       </div>  
     </div>
