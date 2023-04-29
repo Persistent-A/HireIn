@@ -15,7 +15,7 @@ const EmployerDashboard = () => {
     const { employer, isLoading, isError, isSuccess, message } = useSelector((state) => state.auth)
 
 
-    const [services, setServices] = useState()
+    const [services, setServices] = useState([])
     const navigate = useNavigate()
     const dispatch = useDispatch() 
     
@@ -29,18 +29,18 @@ const EmployerDashboard = () => {
     
     useEffect(() => {
         const getServices = async() => {
-          const response = await axios.get('/admin/get-services/')
-          setServices(response.data)
+          await axios.get('/admin/get-services/')
+          .then(response => setServices(response.data))
         }
         getServices()
         if(isError){
           console.log(message)
         }
-    
+        
         if(!employer) {
           navigate('/employer-register')
         }
-    
+
         return () => {
           dispatch(reset())
         }
@@ -62,7 +62,7 @@ const EmployerDashboard = () => {
       <div className="employer-dashboard-extention">
         <Routes>
           <Route path='/account/' element={<EmployerProfile/>}/>
-          <Route path='/search-services/*' element={<SearchSevices/>} />
+          <Route path='/search-services/*' element={<SearchSevices services={services}/>} />
         </Routes>
       </div>  
     </div>

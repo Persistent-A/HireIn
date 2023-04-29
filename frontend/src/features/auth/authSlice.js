@@ -89,16 +89,6 @@ export const searchEmployee = createAsyncThunk('employee/getEmployees', async(se
     }
 })
 
-export const searchIndividualEmployee = createAsyncThunk('employee/getIndividualEmployees', async(employeeId, thunkAPI) => {
-    try {
-        return await authService.searchIndividualEmployee(employeeId)
-    } catch (error) {
-        const message = (error.response && error.response.data && error.response.data.message)
-                            || error.message || error.toString()
-        return thunkAPI.rejectWithValue(message)
-    }
-})
-
 export const loginAdmin = createAsyncThunk('admin/login', async(userData, thunkAPI) => {
     try {
         return await authService.loginAdmin(userData)
@@ -253,20 +243,20 @@ export const authSlice = createSlice({
             state.isError = true
             state.message = action.payload
         })
-        .addCase(searchIndividualEmployee.pending, (state) => {
-            state.isLoading = true
-        })
-        .addCase(searchIndividualEmployee.fulfilled, (state, action) => {
-            state.isLoading = false
-            state.isSuccess = true
-            state.individualEmployee = action.payload
-            state.message = null           
-        })
-        .addCase(searchIndividualEmployee.rejected, (state, action) => {
-            state.isLoading = false
-            state.isError = true
-            state.message = action.payload
-        })
+        // .addCase(searchIndividualEmployee.pending, (state) => {
+        //     state.isLoading = true
+        // })
+        // .addCase(searchIndividualEmployee.fulfilled, (state, action) => {
+        //     state.isLoading = false
+        //     state.isSuccess = true
+        //     state.individualEmployee = action.payload
+        //     state.message = null           
+        // })
+        // .addCase(searchIndividualEmployee.rejected, (state, action) => {
+        //     state.isLoading = false
+        //     state.isError = true
+        //     state.message = action.payload
+        // })
         .addCase(sendforgotPasswordLink.fulfilled, (state, action) => {
             state.isLoading = false
             state.isError = false

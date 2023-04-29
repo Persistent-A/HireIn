@@ -5,25 +5,14 @@ import { searchEmployee } from '../features/auth/authSlice'
 import axios from 'axios'
 import ExpandedEmployee from './ExpandedEmployee'
 
-const SearchSevices = () => {
+const SearchSevices = ({services}) => {
     const [isEmployeeExpanded, setExpandEmployees] = useState(false)
     const [expandedEmployee, setExpandedEmployees] = useState()
     const dispatch = useDispatch()
 
     const { employee } = useSelector((state) => state.auth) 
 
-    const[searchParams, setSearchParams] = useState({
-        specialization: ''
-    })
-
-    const {specialization} = searchParams
-
-    const onChange = (e) => {
-        setSearchParams((prevState)=>({
-            ...prevState,
-            [e.target.name]: e.target.value,
-        }))
-    }
+    const[specialization, setSearchParams] = useState()
 
     const handleSearchEmployee = (e) => {
         e.preventDefault()
@@ -39,11 +28,8 @@ const SearchSevices = () => {
 
     const expandEmployee = async (emp) => {
        const searchIndividualEmployee = async(empId) => {
-        const response = await axios.get("/employee/display_individual_employee/" + empId)
-        console.log(response.data)
-
+        const response = await axios.get("/employees/display_individual_employee/" + empId)
         setExpandedEmployees(response.data)
-        
        }
        await searchIndividualEmployee(emp._id)
        toggleExpandEmployee()
@@ -52,16 +38,19 @@ const SearchSevices = () => {
   return (
     <>
         {isEmployeeExpanded
-        ? <ExpandedEmployee
+        ?
+        <ExpandedEmployee
         expandedEmployee={expandedEmployee}
         toggleExpandEmployee={toggleExpandEmployee}/>
         :
         <>
         <div>
-          <select name='specialization' value={specialization} onChange={onChange}>
-            <option value="">Select Specialization</option>
-            <option value="Cleaning">Cleaning</option>
-            <option value="House Keeping">House Keeping</option>
+          Services:
+          <select name='specialization' value={specialization} onChange={(e) => setSearchParams(e.currentTarget.value)}>
+            <option>Select a specialization</option>
+            {services.map((service) =>
+              <option key={service._id} value={service.service_name}>{service.service_name}</option>
+            )}
           </select>
           <button onClick={handleSearchEmployee}>
             <MdSearch/>
@@ -73,7 +62,7 @@ const SearchSevices = () => {
             <div key={emp._id}>
                 <h4>{emp.first_name} {emp.last_name}</h4>
                 <p>{emp.specialization}</p>
-                <button onClick={()=>expandEmployee(employee)}>Book an Appointment</button> 
+                <button onClick={()=>expandEmployee(emp)}>Book an Appointment</button> 
             </div>
             )}
         </div>

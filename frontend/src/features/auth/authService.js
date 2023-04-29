@@ -84,6 +84,7 @@ const updateEmployee = async(userData, token) => {
 
 const searchEmployee = async(searchParams) => {
     const specialization = searchParams.specialization
+    console.log(specialization)
     const response = await axios.get(`/employers/search/employee/${specialization}`)
     return response.data
 }
