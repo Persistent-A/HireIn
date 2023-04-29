@@ -12,6 +12,7 @@ import EmployeeDashboard from './components/EmployeeDashboard';
 import PasswordResetForm from './components/PasswordResetForm';
 import AdminLoginForm from './components/AdminLoginForm';
 import AdminDashboard from './components/AdminDashboard';
+import ContactUs from './components/ContactUs'
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
           <Route path='/employee-dashboard' element={<EmployeeDashboard />} />
           <Route path='/admin' element={<AdminLoginForm/>} />
           <Route path='/admin-dashboard' element={<AdminDashboard/>} />
+          <Route path='/contact-us' element={<ContactUs/>}/>
         </Routes>
         <Footer/>
       </Router>

@@ -1,5 +1,4 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 const ExpandedEmployee = ({expandedEmployee}) => {
     const{_id, first_name, last_name, specialization, age, phone, email} = expandedEmployee
@@ -7,7 +6,11 @@ const ExpandedEmployee = ({expandedEmployee}) => {
   return (
     <div>
         <div>
-          <h4>{`${first_name}`}</h4>
+          <h4>{`${first_name} ${last_name}`}</h4>
+          <p>{age}</p>
+          <p>{phone}</p>
+          <p>{email}</p>
+          <p>{specialization}</p>
         </div>
     </div>
   )

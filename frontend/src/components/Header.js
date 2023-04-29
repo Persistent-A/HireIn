@@ -26,7 +26,7 @@ const Header = () => {
             <li onClick={toggleHamburger}><Link to="/employee-register">Employees </Link></li>
             <li onClick={toggleHamburger}><Link to="/employer-register">Employers </Link></li>
             <li onClick={toggleHamburger}><Link to="/admin">Admin</Link> </li>
-            <li onClick={toggleHamburger}><Link to="">Services  </Link> </li>
+            <li onClick={toggleHamburger}><Link to="/contact-us">ContactUs  </Link> </li>
           </ul>
         </div>
     </header>
