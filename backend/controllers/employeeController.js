@@ -20,6 +20,7 @@ const getEmployees = asyncHandler(async(req, res) => {
             gender: 0,
         }
     )
+    console.log(preferredEmployees)
     res.status(200).json(preferredEmployees)
     
 })
@@ -126,10 +127,18 @@ const updateEmployee = asyncHandler(async(req, res) => {
     }
 })
 
+//get employees according to ids
+const getIndividualEmployee = asyncHandler(async(req, res) => {
+   const employee = await Employee.findById(req.params.id, {
+    password: 0,
+    })
+    res.status(200).json(employee)
+})
+
 const generateToken = async(id) => {
     return jwt.sign({id}, process.env.JWT_SECRET, {
         expiresIn: '30d'
     })
 }
 
-module.exports = {registerEmployee, loginEmployee, updateEmployee, getEmployees};
+module.exports = {registerEmployee, loginEmployee, updateEmployee, getEmployees, getIndividualEmployee};
