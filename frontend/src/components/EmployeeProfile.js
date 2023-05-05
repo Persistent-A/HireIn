@@ -79,10 +79,16 @@ const EmployeeProfile = ({services}) => {
       isEditForm &&
       <div> 
         <form onSubmit={updateProfile} className="update-form">
-            <div> Age:<input name="age" value={age} placeholder="Age" type="number" onChange={OnChange}/></div>
-            <br/>Gender: <input name="gender" value={gender} placeholder="Gender" onChange={OnChange}/>
+            <div> 
+              Age:<br/>
+              <input name="age" value={age} placeholder="Age" type="number" onChange={OnChange}/>
+            </div>
             <div>
-                Address:<br/>
+              Gender: <br/>
+              <input name="gender" value={gender} placeholder="Gender" onChange={OnChange}/>
+            </div>
+            <div>
+                Address: <br/>
                 <input name="apt" value={apt} placeholder="Apartment"onChange={OnChange} required/>
                 <input name="street" value={street} placeholder="Street" onChange={OnChange} required/><br/>
                 <input name="city" value={city} placeholder="City" onChange={OnChange} required/>
@@ -98,8 +104,8 @@ const EmployeeProfile = ({services}) => {
                 </select>
             </div>
             <input type="submit" value="Update Profile" />
+            <button onClick={showProfile}>View Profile</button>
         </form>
-        <button onClick={showProfile}>View Profile</button>
       </div>
       }
     </div>

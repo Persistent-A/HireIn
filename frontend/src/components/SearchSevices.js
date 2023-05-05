@@ -43,8 +43,8 @@ const SearchSevices = ({services}) => {
         expandedEmployee={expandedEmployee}
         toggleExpandEmployee={toggleExpandEmployee}/>
         :
-        <>
-        <div>
+        <div className='search-services-container'>
+        <div className='search-services'>
           Services:
           <select name='specialization' value={specialization} onChange={(e) => setSearchParams(e.currentTarget.value)}>
             <option>Select a specialization</option>
@@ -56,7 +56,7 @@ const SearchSevices = ({services}) => {
             <MdSearch/>
           </button>
         </div>
-        <div>
+        <div className='search-services-results'>
             {employee && 
             employee.map((emp) => 
             <div key={emp._id}>
@@ -66,7 +66,7 @@ const SearchSevices = ({services}) => {
             </div>
             )}
         </div>
-        </>}
+        </div>}
     </>
   )
 }
