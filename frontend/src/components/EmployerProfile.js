@@ -88,8 +88,8 @@ const EmployerProfile = () => {
             </div>
           }
           <input type="submit" value="Update Profile" />
+          <button onClick={showProfile}>View Profile</button>
         </form>
-        <button onClick={showProfile}>View Profile</button>
       </div>
       }
     </div>
