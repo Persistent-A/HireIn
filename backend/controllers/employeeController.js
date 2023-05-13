@@ -13,11 +13,9 @@ const getEmployees = asyncHandler(async(req, res) => {
         {specialization: { $in: [new RegExp(specialization, 'i')]}},
         {
             password: 0,
-            age: 0,
             address: 0,
             phone: 0,
             email: 0,
-            gender: 0,
         }
     )
     console.log(preferredEmployees)
@@ -133,6 +131,11 @@ const getIndividualEmployee = asyncHandler(async(req, res) => {
     password: 0,
     })
     res.status(200).json(employee)
+})
+
+// Appointemnts Details Retrieval controller
+const getAppoitments = asyncHandler(async(req, res) =>{
+    // const appointment = await Appointment
 })
 
 const generateToken = async(id) => {
