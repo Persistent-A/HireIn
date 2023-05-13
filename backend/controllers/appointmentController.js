@@ -20,7 +20,7 @@ const requestEmployee = asyncHandler(async (req, res) => {
     appointment_booktime: Date.now(),
   });
   const engagement = await Engagements.create({
-    employer_id: req.employer._id,
+    employer_id: employer._id,
     employee_id: employee._id,
     appointment_id: appointment._id,
   });
