@@ -147,19 +147,24 @@ const getAppoitments = asyncHandler(async (req, res) => {
     throw new Error("Not Authorized");
   } else {
     const engagements = await Engagements.find({ employee_id: employee._id });
-    const appointmentData = engagements.map(async (engagement) => {
-      const appointment = await Appointments.findById(
-        engagement.appointment_id
-      );
-      const employer = await Employer.findById(engagement.employer_id, {
-        password: 0,
-      });
-      return {
-        appointment_booktime: appointment.appointment_booktime,
-        employer: employer,
-      };
-    });
+    const appointmentData = await Promise.all(
+      engagements.map(async (engagement) => {
+        const appointment = await Appointments.findById(
+          engagement.appointment_id
+        );
+        const employer = await Employer.findById(engagement.employer_id, {
+          password: 0,
+        });
+        console.log(employer.address);
+        return {
+          appointment_id: appointment._id,
+          appointment_booktime: appointment.appointment_booktime,
+          employer: employer,
+        };
+      })
+    );
     res.status(200).json(appointmentData);
+    console.log(appointmentData);
   }
 });
 
