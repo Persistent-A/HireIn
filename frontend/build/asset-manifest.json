@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/static/css/main.6de97bf5.css",
-    "main.js": "/static/js/main.1a890cae.js",
+    "main.css": "/static/css/main.cdd8f002.css",
+    "main.js": "/static/js/main.07d98e0a.js",
     "static/js/787.dc545e1a.chunk.js": "/static/js/787.dc545e1a.chunk.js",
     "static/media/hirein_logo.png": "/static/media/hirein_logo.9fdad2d95fa647e9ba4a.png",
     "index.html": "/index.html",
-    "main.6de97bf5.css.map": "/static/css/main.6de97bf5.css.map",
-    "main.1a890cae.js.map": "/static/js/main.1a890cae.js.map",
+    "main.cdd8f002.css.map": "/static/css/main.cdd8f002.css.map",
+    "main.07d98e0a.js.map": "/static/js/main.07d98e0a.js.map",
     "787.dc545e1a.chunk.js.map": "/static/js/787.dc545e1a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.6de97bf5.css",
-    "static/js/main.1a890cae.js"
+    "static/css/main.cdd8f002.css",
+    "static/js/main.07d98e0a.js"
   ]
 }
