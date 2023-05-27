@@ -1,8 +1,10 @@
 import "../Styles/employerDashboard.css"
 import { useSelector, useDispatch } from "react-redux"
 import EmployeeProfile from "./EmployeeProfile"
+import EmployeeAppointments from "./EmployeeAppointments"
 import { useEffect, useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import { reset, logout } from "../features/auth/authSlice"
 import axios from 'axios'
 
@@ -49,12 +51,16 @@ const EmployeeDashboard = () => {
     <div className="employer-dashboard">
         <div>
             <p>Welcome {employee ? employee.first_name : ""}</p>
-            <button>Account</button>
+            <Link to="/employee-dashboard/account/">Account</Link>
+            <Link to="/employee-dashboard/appointments/">Appoointments</Link>
             <button onClick={Logout}>Logout</button>
         </div>
 
         <div className="employer-dashboard-extention">
-            <EmployeeProfile services={services}/>
+          <Routes>
+            <Route path="/account/" element={<EmployeeProfile services={services}/>}/>
+            <Route path="/appointments/*" element={<EmployeeAppointments/>}/>
+          </Routes>
         </div>
       
     </div>
