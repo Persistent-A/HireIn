@@ -62,15 +62,30 @@ const EmployerDashboard = () => {
         <p>Welcome {employer ? employer.first_name : ""}</p>
         <div>
           <GrContactInfo />
-          <Link to="/employer-dashboard/account/" className="employer-dashboard-link">Account</Link>
+          <Link
+            to="/employer-dashboard/account/"
+            className="employer-dashboard-link"
+          >
+            Account
+          </Link>
         </div>
         <div>
           <MdHomeRepairService />
-          <Link to="/employer-dashboard/search-services/" className="employer-dashboard-link">Search Services</Link>
+          <Link
+            to="/employer-dashboard/search-services/"
+            className="employer-dashboard-link"
+          >
+            Search Services
+          </Link>
         </div>
         <div>
           <AiOutlineSchedule />
-          <Link to="/employer-dashboard/appointments/" className="employer-dashboard-link">Appointments</Link>
+          <Link
+            to="/employer-dashboard/appointments/"
+            className="employer-dashboard-link"
+          >
+            Appointments
+          </Link>
         </div>
         <button onClick={Logout}>Logout</button>
       </div>

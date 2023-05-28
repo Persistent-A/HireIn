@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { MdOutlineEdit } from "react-icons/md";
 import { updateEmployer } from "../features/auth/authSlice";
 
-import "../Styles/employeeProfile.css"
+import "../Styles/employeeProfile.css";
 
 const EmployerProfile = () => {
   const [isEditForm, setEditForm] = useState(false);

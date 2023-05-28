@@ -92,7 +92,6 @@ const EmployeeProfile = ({ services }) => {
             <div className="profile-section">
               <h3>Address:</h3>
               <div className="profile-address">
-                
                 <p>
                   <span>
                     <strong>Apt:</strong>

@@ -8,6 +8,7 @@
 body {
   font-family: Arial, sans-serif;
   background-color: #f8f9fa;
+ 
 }
 
 /* Employer Dashboard */
@@ -15,6 +16,7 @@ body {
 .employer-dashboard {
   display: flex;
   height: 70vh;
+  margin-top: 10px;
 }
 
 .employer-dashboard > div:nth-of-type(1) {
