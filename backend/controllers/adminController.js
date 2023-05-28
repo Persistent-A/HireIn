@@ -3,6 +3,8 @@ const Admin = require("../models/adminModel");
 const Services = require("../models/serviceModel");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+const Employee = require("../models/employeeModel");
+const Employer = require("../models/employerModel");
 
 //To login an Employee
 const loginAdmin = asyncHandler(async (req, res) => {
@@ -52,10 +54,44 @@ const getServices = asyncHandler(async (req, res) => {
   res.status(200).json(services);
 });
 
+const getUser = asyncHandler(async (req, res) => {
+  const { email, user_type } = req.body;
+  let user;
+  if (user_type === "employee") {
+    user = await Employee.findOne({ email: email });
+  } else {
+    user = await Employer.findOne({ email: email });
+  }
+  if (user) {
+    res.status(200).json(user);
+  } else {
+    res.status(400);
+    throw new Error("User not found, try again");
+  }
+});
+
+const deleteUserAccount = asyncHandler(async (req, res) => {
+  let deletedUser;
+  deletedUser = await Employee.findByIdAndDelete(req.params.userId);
+  deletedUser = await Employer.findByIdAndDelete(req.params.userId);
+  if (deletedUser) {
+    res.status(200).json({ message: "User Deleted" });
+  } else {
+    res.status(400);
+    throw new Error("Error while deleting user");
+  }
+});
+
 const generateToken = async (id) => {
   return await jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: "30d",
   });
 };
 
-module.exports = { loginAdmin, addService, getServices };
+module.exports = {
+  loginAdmin,
+  addService,
+  getServices,
+  getUser,
+  deleteUserAccount,
+};
