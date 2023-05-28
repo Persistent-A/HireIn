@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 
 const ServiceDashboard = ({ services }) => {
   return (
@@ -8,13 +8,15 @@ const ServiceDashboard = ({ services }) => {
         {services.map((service) => (
           <li className="service-list-item" key={service.id}>
             <h4 className="service-list-item-title">{service.name}</h4>
-            <p className="service-list-item-description">{service.description}</p>
+            <p className="service-list-item-description">
+              {service.description}
+            </p>
             <button className="service-list-item-delete-btn">Delete</button>
           </li>
         ))}
       </ul>
     </div>
-  )
-}
+  );
+};
 
-export default ServiceDashboard
+export default ServiceDashboard;

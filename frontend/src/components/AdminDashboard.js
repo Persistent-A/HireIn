@@ -1,40 +1,40 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import {logout, reset } from '../features/auth/authSlice';
-import { useNavigate } from 'react-router-dom';
+import { logout, reset } from "../features/auth/authSlice";
+import { useNavigate } from "react-router-dom";
 import ServiceDashboard from "./ServiceDashboard";
 
-import '../Styles/adminDashboard.css'
+import "../Styles/adminDashboard.css";
 import axios from "axios";
 
 const AdminDashboard = () => {
-    const dispatch = useDispatch()
-    const navigate = useNavigate()
-    const [serviceName, setServiceName] = useState('');
-    const [serviceDescription, setServiceDescription] = useState('');
-    const [services, setServices] = useState([]);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const [serviceName, setServiceName] = useState("");
+  const [serviceDescription, setServiceDescription] = useState("");
+  const [services, setServices] = useState([]);
 
-    const Logout = () => {
-        dispatch(logout())  
-        dispatch(reset())
-        navigate('/admin')
-    }
-    const handleSubmit = async(event) => {
-      event.preventDefault();
-      const newService = {
-        service_name: serviceName,
-        service_description: serviceDescription
-      };
-      const response = await axios.post('/admin/add-service/', newService)
-      console.log(response.data)
-      setServices([...services, newService]);
-      setServiceName('');
-      setServiceDescription('');
+  const Logout = () => {
+    dispatch(logout());
+    dispatch(reset());
+    navigate("/admin");
+  };
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const newService = {
+      service_name: serviceName,
+      service_description: serviceDescription,
     };
-  
-    const handleDelete = (id) => {
-      setServices(services.filter((service) => service.id !== id));
-    };
+    const response = await axios.post("/admin/add-service/", newService);
+    console.log(response.data);
+    setServices([...services, newService]);
+    setServiceName("");
+    setServiceDescription("");
+  };
+
+  const handleDelete = (id) => {
+    setServices(services.filter((service) => service.id !== id));
+  };
 
   return (
     <div className="admin-dashboard-container">
@@ -44,19 +44,39 @@ const AdminDashboard = () => {
         <form className="admin-dashboard-form" onSubmit={handleSubmit}>
           <label htmlFor="serviceName" className="admin-dashboard-form-label">
             Service Name:
-            <input type="text" id="serviceName" className="admin-dashboard-form-input" value={serviceName} onChange={(event) => setServiceName(event.target.value)} />
+            <input
+              type="text"
+              id="serviceName"
+              className="admin-dashboard-form-input"
+              value={serviceName}
+              onChange={(event) => setServiceName(event.target.value)}
+            />
           </label>
-          <label htmlFor="serviceDescription" className="admin-dashboard-form-label">
+          <label
+            htmlFor="serviceDescription"
+            className="admin-dashboard-form-label"
+          >
             Service Description:
-            <textarea id="serviceDescription" className="admin-dashboard-form-textarea" value={serviceDescription} onChange={(event) => setServiceDescription(event.target.value)} />
+            <textarea
+              id="serviceDescription"
+              className="admin-dashboard-form-textarea"
+              value={serviceDescription}
+              onChange={(event) => setServiceDescription(event.target.value)}
+            />
           </label>
-          <input className="admin-dashboard-submit-btn" type="submit" value="Submit"/>
-          <button className="admin-dashboard-logout-btn" onClick={Logout}>Logout</button>
+          <input
+            className="admin-dashboard-submit-btn"
+            type="submit"
+            value="Submit"
+          />
+          <button className="admin-dashboard-logout-btn" onClick={Logout}>
+            Logout
+          </button>
         </form>
       </div>
       <ServiceDashboard services={services} onDelete={handleDelete} />
     </div>
-  )
-}
+  );
+};
 
-export default AdminDashboard
+export default AdminDashboard;

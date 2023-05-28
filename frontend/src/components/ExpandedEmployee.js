@@ -40,13 +40,26 @@ const ExpandedEmployee = ({ expandedEmployee, toggleExpandEmployee }) => {
   return (
     <div className="expanded-employee">
       <h4 className="employee-name">{`${first_name} ${last_name}`}</h4>
-      <p className="employee-info"><strong>Age: </strong>{age}</p>
-      <p className="employee-info"><strong>Phone: </strong>{phone}</p>
-      <p className="employee-info"><strong>Email: </strong>{email}</p>
-      <p className="employee-info"><strong>Specialization: </strong>{specialization}</p>
       <p className="employee-info">
-        <strong>Address: </strong>{address.apt} - {address.street}, {address.city},{" "}
-        {address.postal}, {address.province}
+        <strong>Age: </strong>
+        {age}
+      </p>
+      <p className="employee-info">
+        <strong>Phone: </strong>
+        {phone}
+      </p>
+      <p className="employee-info">
+        <strong>Email: </strong>
+        {email}
+      </p>
+      <p className="employee-info">
+        <strong>Specialization: </strong>
+        {specialization}
+      </p>
+      <p className="employee-info">
+        <strong>Address: </strong>
+        {address.apt} - {address.street}, {address.city}, {address.postal},{" "}
+        {address.province}
       </p>
       <div className="expanded-employee-buttons">
         <button onClick={goBack}>Go Back</button>

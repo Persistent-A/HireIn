@@ -8,9 +8,9 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { reset, logout } from "../features/auth/authSlice";
 import axios from "axios";
 
-import { GrContactInfo } from "react-icons/gr"
-import { AiOutlineSchedule } from "react-icons/ai"
-import { MdLogout } from "react-icons/md"
+import { GrContactInfo } from "react-icons/gr";
+import { AiOutlineSchedule } from "react-icons/ai";
+import { MdLogout } from "react-icons/md";
 
 const EmployeeDashboard = () => {
   const { employee, isLoading, isError, isSuccess, message } = useSelector(
@@ -56,9 +56,28 @@ const EmployeeDashboard = () => {
     <div className="employer-dashboard">
       <div className="employer-dashboard-content">
         <p>Welcome {employee ? employee.first_name : ""}</p>
-        <div><GrContactInfo/><Link to="/employee-dashboard/account/" className="employer-dashboard-link">Account</Link></div>
-        <div><AiOutlineSchedule/><Link to="/employee-dashboard/appointments/" className="employer-dashboard-link">Appointments</Link></div>
-        <button onClick={Logout}><MdLogout/>Logout</button>
+        <div>
+          <GrContactInfo />
+          <Link
+            to="/employee-dashboard/account/"
+            className="employer-dashboard-link"
+          >
+            Account
+          </Link>
+        </div>
+        <div>
+          <AiOutlineSchedule />
+          <Link
+            to="/employee-dashboard/appointments/"
+            className="employer-dashboard-link"
+          >
+            Appointments
+          </Link>
+        </div>
+        <button onClick={Logout}>
+          <MdLogout />
+          Logout
+        </button>
       </div>
 
       <div className="employer-dashboard-extention">

@@ -9,9 +9,7 @@ const {
   getAppointments,
 } = require("../controllers/employerController");
 const { requestEmployee } = require("../controllers/appointmentController");
-const {
-  getEmployees,
-} = require("../controllers/employeeController");
+const { getEmployees } = require("../controllers/employeeController");
 
 // Register and Login Routes for employer
 router.route("/register/").post(registerEmployer);
@@ -19,6 +17,6 @@ router.route("/login/").post(loginEmployer);
 router.route("/update/").put(protect, updateEmployer);
 router.route("/search/employee/:specialization").get(getEmployees);
 router.route("/hire/").post(requestEmployee);
-router.route("/get-appointment/").get(protect, getAppointments)
+router.route("/get-appointment/").get(protect, getAppointments);
 
 module.exports = router;
