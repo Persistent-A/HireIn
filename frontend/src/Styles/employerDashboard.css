@@ -1,7 +1,13 @@
+/* Global Styles */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f8f9fa;
 }
 
 /* Employer Dashboard */
@@ -12,43 +18,150 @@
 }
 
 .employer-dashboard > div:nth-of-type(1) {
-  width: 250px;
+  width: 280px;
   display: flex;
   flex-direction: column;
-  border: 1px solid black;
-  align-items: flex-start;
-  padding: 20px;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+  /* padding: 20px; */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 .employer-dashboard > div:nth-of-type(1) > * {
-  margin: 20px;
+  margin: 10px;
+}
+
+.employer-dashboard > div:nth-of-type(1) > p {
+  margin-top: 70px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.employer-dashboard > div:nth-of-type(1) > div {
+  display: flex;
+  align-items: center; 
+  padding-left: 10px;
+}
+
+.employer-dashboard > div:nth-of-type(1) > div svg {
+  margin-right: 10px;
+  font-size: 25px;
+}
+
+.employer-dashboard-link {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+  transition: color 0.3s ease;
+  padding: 10px;
+}
+
+.employer-dashboard-link:hover {
+  color: #646262
+}
+
+.employer-dashboard > div:nth-of-type(1) > div:hover {
+  width: 90%;
+  /* background-color: #3f51b5; */
+  color: #646262
 }
 
 .employer-dashboard > div:nth-of-type(1) > button {
-  padding: 5px 20px;
-  border: 1px solid black;
-  border-radius: 10px;
-  font-size: 15px;
-  width: 100px;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 10px 0px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #3f51b5;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.employer-dashboard > div:nth-of-type(1) > button svg {
+  margin-right: 10px;
+  font-size: 20px;
 }
 
 .employer-dashboard > div:nth-of-type(1) > button:hover {
   cursor: pointer;
-  background-color: black;
-  color: white;
+  background-color: #2c387e;
 }
 
-.employer-dashboard-extention {
-  width: 100%;
-  border: 1px solid black;
+/* .employer-dashboard {
   display: flex;
+  height: 70vh;
+}
+
+.employer-dashboard > div:nth-of-type(1) {
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-right: 1px solid #ccc;
+  padding: 20px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+.employer-dashboard > div:nth-of-type(1) > * {
+  /* border:1px solid red; */
+  /* margin-bottom: 25px;
+} */
+
+/* .employer-dashboard > div:nth-of-type(1) > p {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+} */
+
+/* .employer-dashboard > div:nth-of-type(1) > a {
+  text-decoration: none;
+  font-size: 16px;
+  color: #333;
+  transition: color 0.3s ease;
+} */
+
+/* .employer-dashboard > div:nth-of-type(1) > a:hover {
+  color: #777;
+} */
+
+/* .employer-dashboard > div:nth-of-type(1) > button {
+  width: 50%;
+  margin-top: 20px;
+  padding: 10px 0px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: #3f51b5;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+} */
+
+/* .employer-dashboard > div:nth-of-type(1) > button:hover {
+  background-color: #2c387e;
+}  */
+
+.employer-dashboard-extention {
+  flex: 1;
+  background-color: #fff;
+  display: flex;
+  /* flex-direction: column; */
   justify-content: center;
   align-items: center;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
 }
 
 /* Employer Profile */
 
-.employer-profile {
+/* .employer-profile {
   background-color: #f7f7f7;
   border-radius: 10px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
@@ -82,7 +195,7 @@
 
 .employer-profile button:hover {
   background-color: #3e8e41;
-}
+} */
 
 /* UPDATE FORM */
 .update-form {
@@ -286,5 +399,3 @@
   cursor: pointer;
   border-radius: 5px;
 }
-
-
