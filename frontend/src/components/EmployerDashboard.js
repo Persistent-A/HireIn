@@ -11,6 +11,10 @@ import axios from "axios";
 import SearchSevices from "./SearchSevices";
 import EmployerAppointments from "./EmployerAppointments";
 
+import { MdHomeRepairService } from "react-icons/md";
+import { GrContactInfo } from "react-icons/gr";
+import { AiOutlineSchedule } from "react-icons/ai";
+
 const EmployerDashboard = () => {
   const { employer, isLoading, isError, isSuccess, message } = useSelector(
     (state) => state.auth
@@ -54,11 +58,20 @@ const EmployerDashboard = () => {
 
   return (
     <div className="employer-dashboard">
-      <div>
+      <div className="employer-dashboard-content">
         <p>Welcome {employer ? employer.first_name : ""}</p>
-        <Link to="/employer-dashboard/account/">Account</Link>
-        <Link to="/employer-dashboard/search-services/">Search Services</Link>
-        <Link to="/employer-dashboard/appointments/">Appointments</Link>
+        <div>
+          <GrContactInfo />
+          <Link to="/employer-dashboard/account/" className="employer-dashboard-link">Account</Link>
+        </div>
+        <div>
+          <MdHomeRepairService />
+          <Link to="/employer-dashboard/search-services/" className="employer-dashboard-link">Search Services</Link>
+        </div>
+        <div>
+          <AiOutlineSchedule />
+          <Link to="/employer-dashboard/appointments/" className="employer-dashboard-link">Appointments</Link>
+        </div>
         <button onClick={Logout}>Logout</button>
       </div>
       <div className="employer-dashboard-extention">

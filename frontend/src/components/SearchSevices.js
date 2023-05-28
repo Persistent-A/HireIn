@@ -45,7 +45,7 @@ const SearchSevices = ({services}) => {
         :
         <div className='search-services-container'>
         <div className='search-services'>
-          Services:
+          <strong>Services:</strong>
           <select name='specialization' value={specialization} onChange={(e) => setSearchParams(e.currentTarget.value)}>
             <option>Select a specialization</option>
             {services.map((service) =>
@@ -53,11 +53,11 @@ const SearchSevices = ({services}) => {
             )}
           </select>
           <button onClick={handleSearchEmployee}>
-            <MdSearch/>
+            <strong><MdSearch/></strong>
           </button>
         </div>
         <div className='search-services-results'>
-            {employee && 
+            {employee.length === 0 ? "No Employees Found": 
             employee.map((emp) => 
             <div key={emp._id}>
                 <h4>{emp.first_name} {emp.last_name}</h4>
