@@ -19,8 +19,9 @@ const EmployerAppointments = () => {
   }, []);
 
   return (
-    <div className="employer-appointment-container">
+    <>
       <h2 className="employer-appointment-title">Appointments</h2>
+    <div className="employer-appointment-container">
       {appointments ? (
         appointments.map((appointment) => (
           <div
@@ -60,6 +61,7 @@ const EmployerAppointments = () => {
         <div>No appointments</div>
       )}
     </div>
+    </>
   );
 };
 
