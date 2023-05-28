@@ -28,6 +28,7 @@ app.use("/employers", require("./routes/employerRoutes"));
 app.use("/employees", require("./routes/employeeRoutes"));
 app.use("/forgot-pass", require("./routes/forgotPass"));
 app.use("/admin", require("./routes/adminRoutes"));
+app.use("/contact", require("./routes/constactUs"))
 
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/build")));

@@ -1,80 +1,71 @@
-import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+// import { useState } from "react";
 import { logout, reset } from "../features/auth/authSlice";
-import { useNavigate } from "react-router-dom";
-import ServiceDashboard from "./ServiceDashboard";
-
-import "../Styles/adminDashboard.css";
-import axios from "axios";
+// import { useNavigate, useSearchParams } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { MdHomeRepairService } from 'react-icons/md'
+import { GrContactInfo } from 'react-icons/gr'
+import { AiOutlineSchedule } from 'react-icons/ai'
+ import AddService from "./AddService";
+import ManageUsers from "./ManageUsers";
+import Inquiries from "./Inquiries";
 
 const AdminDashboard = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [serviceName, setServiceName] = useState("");
-  const [serviceDescription, setServiceDescription] = useState("");
-  const [services, setServices] = useState([]);
+ 
+  const { admin } = useSelector((state) => state.auth);
 
   const Logout = () => {
     dispatch(logout());
     dispatch(reset());
     navigate("/admin");
   };
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const newService = {
-      service_name: serviceName,
-      service_description: serviceDescription,
-    };
-    const response = await axios.post("/admin/add-service/", newService);
-    console.log(response.data);
-    setServices([...services, newService]);
-    setServiceName("");
-    setServiceDescription("");
-  };
-
-  const handleDelete = (id) => {
-    setServices(services.filter((service) => service.id !== id));
-  };
 
   return (
-    <div className="admin-dashboard-container">
-      <h2 className="admin-dashboard-title">Welcome to the Admin Dashboard</h2>
-      <div className="admin-dashboard-form-container">
-        <h3 className="admin-dashboard-form-title">Add Service</h3>
-        <form className="admin-dashboard-form" onSubmit={handleSubmit}>
-          <label htmlFor="serviceName" className="admin-dashboard-form-label">
-            Service Name:
-            <input
-              type="text"
-              id="serviceName"
-              className="admin-dashboard-form-input"
-              value={serviceName}
-              onChange={(event) => setServiceName(event.target.value)}
-            />
-          </label>
-          <label
-            htmlFor="serviceDescription"
-            className="admin-dashboard-form-label"
+    <div className="employer-dashboard">
+      <div className="employer-dashboard-content">
+        <p>Welcome {admin ? admin.first_name : ""}</p>
+        <div>
+          <GrContactInfo />
+          <Link
+            to="/admin-dashboard/inquiries/"
+            className="employer-dashboard-link"
           >
-            Service Description:
-            <textarea
-              id="serviceDescription"
-              className="admin-dashboard-form-textarea"
-              value={serviceDescription}
-              onChange={(event) => setServiceDescription(event.target.value)}
-            />
-          </label>
-          <input
-            className="admin-dashboard-submit-btn"
-            type="submit"
-            value="Submit"
-          />
-          <button className="admin-dashboard-logout-btn" onClick={Logout}>
-            Logout
-          </button>
-        </form>
+            Inquiries
+          </Link>
+        </div>
+        <div>
+          <MdHomeRepairService />
+          <Link
+            to="/admin-dashboard/services/"
+            className="employer-dashboard-link"
+          >
+            Services
+          </Link>
+        </div>
+        <div>
+          <AiOutlineSchedule />
+          <Link
+            to="/admin-dashboard/users/"
+            className="employer-dashboard-link"
+          >
+            Manage Users
+          </Link>
+        </div>
+        <button onClick={Logout}>Logout</button>
       </div>
-      <ServiceDashboard services={services} onDelete={handleDelete} />
+      <div className="employer-dashboard-extention">
+        <Routes>
+          <Route path="/inquiries/*" element={<Inquiries />} />
+          <Route
+              path="/services/*"
+              element={<AddService />}
+            />
+          <Route path="/users/*" element={<ManageUsers />} />
+        </Routes>
+      </div>
     </div>
   );
 };
