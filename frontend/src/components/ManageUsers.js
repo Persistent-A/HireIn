@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-const ManageUsers = () => {
+const ManageUsers = ({ populateAlert }) => {
   const [email, setEmail] = useState("");
   const [user_type, setUser] = useState("");
   const [showDeleteModal, setDeleteModal] = useState(false);
@@ -13,16 +13,18 @@ const ManageUsers = () => {
       .post("/admin/get-user", { user_type: user_type, email: email })
       .then((response) => {
         setUserData(response.data);
-        console.log(response.data);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        populateAlert(error.response.data.message);
+        console.log(error);
+      });
   };
 
   const deleteUserAccount = async (userId) => {
     await axios
       .delete(`/admin/delete-user/${userId}`)
-      .then((response) => console.log(response.data))
-      .catch((error) => console.log(error));
+      .then((response) => populateAlert(response.data.message))
+      .catch((error) => populateAlert(error));
   };
   return (
     <>
