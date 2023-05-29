@@ -5,25 +5,25 @@ import "../Styles/adminDashboard.css";
 import axios from "axios";
 
 const AddService = () => {
-     const [serviceName, setServiceName] = useState("");
+  const [serviceName, setServiceName] = useState("");
   const [serviceDescription, setServiceDescription] = useState("");
   const [services, setServices] = useState([]);
   const handleSubmit = async (event) => {
-      event.preventDefault();
-      const newService = {
-        service_name: serviceName,
-        service_description: serviceDescription,
-      };
-      const response = await axios.post("/admin/add-service/", newService);
-      console.log(response.data);
-      setServices([...services, newService]);
-      setServiceName("");
-      setServiceDescription("");
+    event.preventDefault();
+    const newService = {
+      service_name: serviceName,
+      service_description: serviceDescription,
     };
+    const response = await axios.post("/admin/add-service/", newService);
+    console.log(response.data);
+    setServices([...services, newService]);
+    setServiceName("");
+    setServiceDescription("");
+  };
 
-    const handleDelete = (id) => {
-      setServices(services.filter((service) => service.id !== id));
-    };
+  const handleDelete = (id) => {
+    setServices(services.filter((service) => service.id !== id));
+  };
 
   return (
     <div className="admin-dashboard-container">
