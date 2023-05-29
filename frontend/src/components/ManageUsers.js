@@ -28,30 +28,39 @@ const ManageUsers = ({ populateAlert }) => {
   };
   return (
     <>
-      <form onSubmit={searchUser}>
-        <input
-          type="email"
-          name="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          type="radio"
-          name="user_type"
-          value="employee"
-          id="employee"
-          onChange={(e) => setUser(e.target.value)}
-        />
-        <label htmlFor="employee">Employee</label>
-        <input
-          type="radio"
-          name="user_type"
-          value="employer"
-          id="employer"
-          onChange={(e) => setUser(e.target.value)}
-        />
-        <label htmlFor="employer">Employer</label>
-        <input type="submit" value="Search" />
+      <form onSubmit={searchUser} className="container d-flex flex-column">
+        <div className="row">
+          <label className="col-2">User Email: </label>
+          <input
+            className="col-3"
+            type="email"
+            name="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="row">
+          <label className="col-2">User Type:</label>
+          <div className="col-3">
+            <input
+              type="radio"
+              name="user_type"
+              value="employee"
+              id="employee"
+              onChange={(e) => setUser(e.target.value)}
+            />
+            <label htmlFor="employee">Employee</label>
+            <input
+              type="radio"
+              name="user_type"
+              value="employer"
+              id="employer"
+              onChange={(e) => setUser(e.target.value)}
+            />
+            <label htmlFor="employer">Employer</label>
+          </div>
+        </div>
+        <input type="submit" value="Search" className="col-3" />
       </form>
       {userData.first_name && (
         <div>
