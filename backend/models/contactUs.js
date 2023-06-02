@@ -18,6 +18,10 @@ const contactUsSchema = mongoose.Schema(
       type: String,
       required: [true, "Please enter message"],
     },
+    isResolved: {
+      type: Boolean,
+      default: false,
+    },
   },
   {
     timestamp: true,

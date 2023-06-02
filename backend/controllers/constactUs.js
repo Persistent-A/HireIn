@@ -17,12 +17,28 @@ const registerInquiry = asyncHandler(async (req, res) => {
   }
 });
 
-const getInqiuries = asyncHandler(async(req, res) => {
-  const inquiries = await Contacts.find()
-  res.status(200).json(inquiries)
-})
+const getInqiuries = asyncHandler(async (req, res) => {
+  const inquiries = await Contacts.find({ isResolved: false });
+  res.status(200).json(inquiries);
+});
+
+const markResolveAppointment = asyncHandler(async (req, res) => {
+  const inquiry = await Contacts.findByIdAndUpdate(
+    req.params.appointment_id,
+    { isResolved: true },
+    {
+      new: true,
+    }
+  );
+  if (inquiry) {
+    res.status(200).json({ message: "Inquiry resolved" });
+  } else {
+    res.status(400).json({ message: "Error resolving appointment" });
+  }
+});
 
 module.exports = {
   registerInquiry,
-  getInqiuries
+  getInqiuries,
+  markResolveAppointment,
 };

@@ -101,12 +101,10 @@ const updateEmployer = asyncHandler(async (req, res) => {
         new: true,
       }
     );
-    res
-      .status(200)
-      .json({
-        ...updatedEmployer._doc,
-        token: await generateToken(updatedEmployer._id),
-      });
+    res.status(200).json({
+      ...updatedEmployer._doc,
+      token: await generateToken(updatedEmployer._id),
+    });
   }
 });
 
@@ -117,16 +115,15 @@ const getAppointments = asyncHandler(async (req, res) => {
     throw new Error("Not Authorized");
   } else {
     const engagements = await Engagements.find({ employer_id: employer._id });
+    // console.log(engagements);
     const appointmentData = await Promise.all(
       engagements.map(async (engagement) => {
         const appointment = await Appointments.findById(
           engagement.appointment_id
         );
-        console.log(appointment);
         const employee = await Employee.findById(engagement.employee_id, {
           password: 0,
         });
-        console.log(employer);
         return {
           appointment_id: appointment._id,
           appointment_booktime: appointment.appointment_booktime,

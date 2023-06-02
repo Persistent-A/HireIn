@@ -1,7 +1,7 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
-  
+
 body {
   margin: 0;
   font-family: Arial, sans-serif;
@@ -31,7 +31,7 @@ body {
   padding: 2rem;
   border-radius: 5px;
   background-color: #fff;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .admin-dashboard-form-title {
@@ -79,7 +79,13 @@ body {
 .admin-dashboard-submit-btn:hover {
   background-color: #388e3c;
 }
-.admin-dashboard-logout-btn:hover{
+.admin-dashboard-logout-btn:hover {
   background-color: red;
 }
-  
+
+.alert-container {
+  width: 300px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}

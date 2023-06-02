@@ -25,7 +25,9 @@ const AdminLoginForm = () => {
 
   useEffect(() => {
     if (admin) {
-      navigate("/admin-dashboard");
+      navigate("/admin-dashboard/services/");
+    } else {
+      navigate("/admin");
     }
   }, [admin, navigate]);
 

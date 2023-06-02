@@ -21,9 +21,9 @@ const AddService = () => {
     setServiceDescription("");
   };
 
-  const handleDelete = (id) => {
-    setServices(services.filter((service) => service.id !== id));
-  };
+  // const handleDelete = (id) => {
+  //   setServices(services.filter((service) => service.id !== id));
+  // };
 
   return (
     <div className="admin-dashboard-container">
@@ -60,7 +60,7 @@ const AddService = () => {
           />
         </form>
       </div>
-      <ServiceDashboard services={services} onDelete={handleDelete} />
+      {/* <ServiceDashboard services={services} onDelete={handleDelete} /> */}
     </div>
   );
 };

@@ -48,7 +48,7 @@ const EmployerRegister = () => {
     }
 
     if (employee) {
-      navigate("/employee-dashboard");
+      navigate("/employee-dashboard/account/");
     }
 
     if (!employee) {

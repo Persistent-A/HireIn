@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { logout, reset } from "../features/auth/authSlice";
 // import { useNavigate, useSearchParams } from "react-router-dom";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
@@ -28,8 +28,13 @@ const AdminDashboard = () => {
   const Logout = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate("/admin");
   };
+
+  useEffect(() => {
+    if (!admin) {
+      navigate("/admin");
+    }
+  }, [admin, navigate]);
 
   return (
     <div className="employer-dashboard">
@@ -67,13 +72,15 @@ const AdminDashboard = () => {
       <div className="employer-dashboard-extention">
         {showAlert && (
           <div
-            class="alert alert-warning alert-dismissible fade show"
+            className="alert alert-warning alert-dismissible fade show d-flex justify-content-between alert-container"
             role="alert"
           >
-            <strong>Alert: </strong> {alertMessage}
+            <p>
+              <strong>Alert: </strong> {alertMessage}
+            </p>
             <button
               type="button"
-              className="close"
+              className="close btn btn-danger"
               data-dismiss="alert"
               aria-label="Close"
               onClick={() => setIsAlert(false)}
