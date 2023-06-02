@@ -24,6 +24,10 @@ const EmployeeAppointments = () => {
       <h2 className="employer-appointment-title">Appointments</h2>
       <div className="employer-appointment-container">
         {appointments ? (
+          <div className="no-appointments d-flex align-items-center">
+            No appointments
+          </div>
+        ) : (
           appointments.map((appointment) => (
             <div
               key={appointment.appointment_id}
@@ -57,8 +61,6 @@ const EmployeeAppointments = () => {
               </div>
             </div>
           ))
-        ) : (
-          <div className="no-appointments">No appointments</div>
         )}
       </div>
     </>
