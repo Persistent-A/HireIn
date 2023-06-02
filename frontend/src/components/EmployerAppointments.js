@@ -13,7 +13,9 @@ const EmployerAppointments = () => {
         },
       };
       const response = await axios.get("/employers/get-appointment/", config);
+      console.log(response.data);
       setAppointments(response.data);
+      console.log(appointments);
     };
     getAppointments();
   }, []);

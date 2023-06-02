@@ -31,7 +31,7 @@ const EmployerRegister = () => {
     }
 
     if (isSuccess || employer) {
-      navigate("/employer-dashboard");
+      navigate("/employer-dashboard/account/");
     }
 
     dispatch(reset());
