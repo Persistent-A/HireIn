@@ -19,7 +19,7 @@ const sendResetPassLink = asyncHandler(async (req, res) => {
     const token = await generateToken(employee ? employee._id : employer._id);
     console.log(token);
 
-    const link = `https://hire-in.vercel.app/reset-password/${token}`;
+    const link = `http://localhost:3000/reset-password/${token}`;
 
     var transporter = nodemailer.createTransport({
       service: "gmail",

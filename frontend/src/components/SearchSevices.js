@@ -67,7 +67,7 @@ const SearchSevices = ({ services }) => {
             </button>
           </div>
           <div className="search-services-results">
-            {!employee ? (
+            {!employee[0] ? (
               <div className="no-employees-found">No employees found</div>
             ) : (
               employee.map((emp) => (
