@@ -24,7 +24,9 @@ const EmployerAppointments = () => {
     <>
       <h2 className="employer-appointment-title">Appointments</h2>
       <div className="employer-appointment-container">
-        {appointments ? (
+        {!appointments || !appointments[0] ? (
+          <div className="d-flex align-items-center">No appointments</div>
+        ) : (
           appointments.map((appointment) => (
             <div
               key={appointment.appointment_id}
@@ -59,8 +61,6 @@ const EmployerAppointments = () => {
               </div>
             </div>
           ))
-        ) : (
-          <div>No appointments</div>
         )}
       </div>
     </>
