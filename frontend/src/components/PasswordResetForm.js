@@ -5,6 +5,7 @@ import axios from "axios";
 
 function PasswordResetForm() {
   const { token } = useParams();
+  const [message, setMessage] = useState("");
 
   const [passwordObject, setPasswordObject] = useState({
     new_password: "",
@@ -31,17 +32,31 @@ function PasswordResetForm() {
       const password = {
         password: passwordObject.new_password,
       };
-      const response = await axios.put(
-        "http://localhost:5005/forgot-pass/reset-password/",
-        password,
-        config
-      );
-      console.log(response.data);
+      await axios
+        .put("/forgot-pass/reset-password/", password, config)
+        .then((response) => {
+          setMessage(response.data.message);
+          setPasswordObject({
+            new_password: "",
+            confirm_password: "",
+          });
+        });
     }
   };
 
   return (
     <form onSubmit={handleSubmit} className="reset-form">
+      {message && (
+        <div className="alert alert-primary">
+          <span>{message}</span>
+          <button
+            onClick={() => setMessage("")}
+            className="btn btn-danger mx-4"
+          >
+            X
+          </button>
+        </div>
+      )}
       <h2>Password Reset</h2>
       <label>
         New Password:
