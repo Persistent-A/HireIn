@@ -30,7 +30,7 @@ const EmployerRegister = () => {
       navigate("/employer-register");
     }
 
-    if (isSuccess || employer) {
+    if (isSuccess || employer?._id) {
       navigate("/employer-dashboard/account/");
     }
 

@@ -21,7 +21,7 @@ function App() {
       <Router>
         <Header />
         <Routes>
-          {/* <Route path='/home' element={<PasswordResetForm/>} /> */}
+          <Route path="/" element={<EmployerRegister />} />
           <Route
             path="/reset-password/:token"
             element={<PasswordResetForm />}
