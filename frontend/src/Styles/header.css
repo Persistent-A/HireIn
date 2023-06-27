@@ -15,8 +15,9 @@
 }
 
 .logo{
-  height: 40%;
-  margin-left: 20px;
+  width: 35px;
+  height: 30px;
+  object-fit: cover;
 }
 
 .drawing-menu {
