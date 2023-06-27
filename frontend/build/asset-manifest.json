@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/static/css/main.0fa7d122.css",
-    "main.js": "/static/js/main.c6870c92.js",
+    "main.css": "/static/css/main.b9beb114.css",
+    "main.js": "/static/js/main.cd2fbc7f.js",
     "static/js/787.dc545e1a.chunk.js": "/static/js/787.dc545e1a.chunk.js",
     "static/media/employer.jpg": "/static/media/employer.dc7f906d8448f273082d.jpg",
     "static/media/Landing.jpg": "/static/media/Landing.444fc9d9fd578a62d03c.jpg",
     "static/media/hirein_logo.png": "/static/media/hirein_logo.9fdad2d95fa647e9ba4a.png",
     "index.html": "/index.html",
-    "main.0fa7d122.css.map": "/static/css/main.0fa7d122.css.map",
-    "main.c6870c92.js.map": "/static/js/main.c6870c92.js.map",
+    "main.b9beb114.css.map": "/static/css/main.b9beb114.css.map",
+    "main.cd2fbc7f.js.map": "/static/js/main.cd2fbc7f.js.map",
     "787.dc545e1a.chunk.js.map": "/static/js/787.dc545e1a.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.0fa7d122.css",
-    "static/js/main.c6870c92.js"
+    "static/css/main.b9beb114.css",
+    "static/js/main.cd2fbc7f.js"
   ]
 }
