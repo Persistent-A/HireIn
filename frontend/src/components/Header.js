@@ -19,7 +19,9 @@ const toggleHamburger = () => {
 const Header = () => {
   return (
     <header className="header">
-      <img src={hireinLogo} alt="" className="logo" />
+      <div>
+        <a href="/#logo" rel="norefferal"><img src={hireinLogo} alt="" className="logo"/></a>
+      </div>
 
       <Hamburger />
       <div className="drawing-menu">
