@@ -19,26 +19,41 @@ const toggleHamburger = () => {
 const Header = () => {
   return (
     <header className="header">
-      <div>
-        <a href="/#logo" rel="norefferal"><img src={hireinLogo} alt="" className="logo"/></a>
-      </div>
+      <div className="header-logo-menu-club">
+        <div>
+          <a href="/#logo" rel="norefferal">
+            <img src={hireinLogo} alt="" className="logo" />
+          </a>
+        </div>
 
-      <Hamburger />
-      <div className="drawing-menu">
-        <div className="translucent" onClick={toggleHamburger}></div>
-        <ul className="menu">
-          <li onClick={toggleHamburger}>
-            <Link to="/employee-register">Employees </Link>
-          </li>
-          <li onClick={toggleHamburger}>
-            <Link to="/employer-register">Employers </Link>
-          </li>
-          <li onClick={toggleHamburger}>
-            <Link to="/admin">Admin</Link>{" "}
-          </li>
-          <li onClick={toggleHamburger}>
-            <Link to="/contact-us">ContactUs </Link>{" "}
-          </li>
+        <Hamburger />
+        <div className="drawing-menu">
+          <div className="translucent" onClick={toggleHamburger}></div>
+          <ul className="menu">
+            <li onClick={toggleHamburger}>
+              <Link to="/employee-register">Employees </Link>
+            </li>
+            <li onClick={toggleHamburger}>
+              <Link to="/employer-register">Employers </Link>
+            </li>
+            <li onClick={toggleHamburger}>
+              <Link to="/admin">Admin</Link>{" "}
+            </li>
+            <li onClick={toggleHamburger}>
+              <Link to="/contact-us">ContactUs </Link>{" "}
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="search-sign">
+        <input
+          type="text"
+          placeholder="Search HireIn"
+          className="search-input"
+        />
+        <ul className="sign">
+          <li>Sign in</li>
+          <li>Sign up</li>
         </ul>
       </div>
     </header>

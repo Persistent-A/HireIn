@@ -1,10 +1,10 @@
-*{
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.header{
+.header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -14,10 +14,17 @@
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.logo{
+.header-logo-menu-club{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
   width: 35px;
   height: 30px;
   object-fit: cover;
+  margin: 0 20px 0 100px;
 }
 
 .drawing-menu {
@@ -37,18 +44,18 @@
   background-color: black;
 }
 
-.menu {
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   height: 100%;
-   width: 80vw;
-   background-color:#68cbe7;
-   padding-top: 15vh;
-   transition: all 0.5s;
+.menu{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  width: 80vw;
+  background-color: #68cbe7;
+  padding-top: 15vh;
+  transition: all 0.5s;
 }
 
-.menu > li {
+.menu > li{
   padding: 10px;
   width: 100%;
   margin-right: 0;
@@ -59,7 +66,6 @@
   cursor: pointer;
   color: white;
 }
-
 
 .menu > * {
   margin-bottom: 30px;
@@ -72,62 +78,117 @@
   text-decoration: none;
 }
 
-.menu-toggle{
+.menu-toggle {
   right: 0;
   transition: all 0.5s;
 }
 
-@media only screen and (min-width: 700px){
-    .drawing-menu{
-        position: relative;
-        height: 100%;
-        right: 0%;
-    }
-
-    .translucent {
-        display: none;
-    }
-
-    .menu {
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        width: 500px;
-        height: 100%;
-        padding: 0;
-        /* margin: 0; */
-        background-color: white;
-      }
-
-    .menu li a {
-        /* color: black; */
-        display: block;
-        /* padding: 10px; */
-        text-decoration: none;
-        color: #333;
-        font-weight: bold;
-        /* border-radius: 5px; */
-    }
-    
-    .menu li {
-        /* width: 100%; */
-        margin-right: 0;
-        list-style-type: none;
-        /* margin: 0; */
-        margin: 0 10px;
-    }
-
-    .menu li:nth-of-type(1){
-      margin-right: 15px;
-    }
-
-    .menu > li:hover {
-      /* background-color: grey; */
-      color: white;
-      /* border-radius: 10px 0px; */
-      background-color: #eee;
-    }
-    
+.search-sign{ 
+  display: none;
 }
 
+@media only screen and (min-width: 700px) {
+  
+  .drawing-menu {
+    position: relative;
+    height: 100%;
+    right: 0%;
+  }
 
+  .translucent {
+    display: none;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 500px;
+    height: 100%;
+    padding: 0;
+    margin-top: 15px;
+    /* margin: 0; */
+    background-color: white;
+    /* border: 1px solid red; */
+  }
+
+  .search-sign {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 500px;
+    height: 100%;
+    padding: 0;
+    /* margin: 0; */
+    background-color: white;
+    /* border: 1px solid red; */
+  }
+
+  .menu li a, .sign li {
+    /* color: black; */
+    display: block;
+    /* padding: 10px; */
+    text-decoration: none;
+    color: #333;
+    font-weight: 550;
+    /* border-radius: 5px; */
+  }
+
+  .menu li {
+    /* width: 100%; */
+    margin-right: 0;
+    list-style-type: none;
+    /* margin: 0; */
+    margin: 0 10px;
+  }
+
+  .menu li:nth-of-type(1) {
+    margin-right: 15px;
+  }
+
+  .menu > li a:hover, .sign > li:hover  {
+    /* background-color: grey; */
+    /* color: white; */
+    /* border-radius: 10px 0px; */
+    color: #696767;
+    cursor: pointer;
+  }
+
+  .sign {
+    display: flex;
+    align-items: center;
+    margin-top: 15px;
+    width: 100%;
+    /* border: 1px solid red; */
+  }
+
+  .sign li{
+    /* border: 1px solid red; */
+    /* width: 100px; */
+    /* margin-top: 15px; */
+    text-align: center;
+  }
+
+  .sign li:nth-of-type(1) {
+    margin-right: 20px;
+  }
+
+  .sign li:nth-of-type(2){
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 0 4px;
+    height: 4.5vh;
+    display: flex;
+    align-items: center;
+  }
+
+  .search-input{
+    width: 500px;
+    /* border: 1px solid red; */
+    text-align: left;
+    height: 5vh;
+    padding-left: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+}
