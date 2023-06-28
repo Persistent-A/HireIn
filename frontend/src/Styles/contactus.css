@@ -1,85 +1,140 @@
-.conatctus-conatiner {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 60px 20px;
-    background-color: #f7f7f7;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
-    width: 100%;
-    max-width: 800px;
-    margin: 70px auto 70px auto;
-  }
-  
-  .contactus-content {
-    text-align: center;
-    margin-bottom: 40px;
-  }
-  
-  .contactus-content p:first-child {
-    font-size: 2rem;
-    font-weight: bold;
-    margin-bottom: 20px;
-    color: #333;
-  }
-  
-  .contactus-content p:last-child {
-    color: #666;
-  }
+.contactus-container {
+  height: 100vh;
+  background-color: #3e2093;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
 
-  .contactus-form {
-    width: 45%;
-  }
-  
-  .contactus-form input,
-  .contactus-form textarea {
-    display: block;
-    width: 100%;
-    margin: 10px 0 20px 0;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    background-color: #f2f2f2;
-    font-size: 16px;
-    font-weight: 500;
-    color: #333;
-  }
-  
-  .contactus-form input[type="submit"] {
-    width: 100%;
-    background-color: #0077b5;
-    color: #fff;
-    cursor: pointer;
-  }
-  
-  .contactus-contacts {
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    padding: 0 100px;
-  }
+.contactus-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
-  .contactus-contacts div p:nth-of-type(1) {
-    font-weight: 550;
-    
-  }
-  
-  .contactus-contacts div {
-    margin-bottom: 10px;
-    padding: 10px;
-  }
-  
-  .contactus-contacts p {
-    font-size: 16px;
-    font-weight: 500;
-    color: #333;
-    margin-bottom: 5px;
-  }
-  
-  .contactus-secondcontent {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-  }
-  
+.contactus-content > p {
+  color: #fdfdfe;
+  text-align: center;
+}
+
+.contactus-content-links {
+  display: flex;
+  gap: 25px;
+
+  margin-top: 30px;
+}
+
+.contactus-content-links > a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+
+  color: #fdfdfe;
+  padding: 10px;
+  width: 200px;
+  border-radius: 5px;
+  scale: 1;
+  background-color: transparent;
+  transition: scale 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.contactus-content-links > a:hover {
+  color: #fdfdfe;
+  background-color: #fa949d;
+  scale: 1.1;
+  transition: scale 0.2s ease-in-out, background-color 0.2s ease-in-out;
+}
+
+.contactus-content-links-icon {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.contactus-content-title {
+  font-size: 35px;
+  font-weight: 500;
+}
+
+.contactus-form {
+  background-color: #f9f9fb;
+  padding: 40px;
+  width: 50%;
+  border-radius: 10px;
+  margin-top: 40px;
+}
+
+.contactus-form-title {
+  margin-bottom: 30px;
+}
+
+.contactus-form-fields-container {
+  display: flex;
+  gap: 20px;
+}
+
+.contactus-form-fields-container > div {
+  width: 50%;
+}
+
+.contactus-form-field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.contactus-form-field > label {
+  color: #23244f;
+  margin-bottom: 5px;
+}
+
+.contactus-form-field > textarea {
+  height: 100%;
+  border: 1px solid #e3e3ec;
+  border-radius: 5px;
+
+  padding: 20px;
+}
+
+.contactus-form-field-input {
+  position: relative;
+}
+
+.contactus-form-field-input > input {
+  padding: 5px 10px 5px 30px;
+  border: 1px solid #e3e3ec;
+  border-radius: 5px;
+  height: 45px;
+
+  width: 100%;
+}
+
+.contactus-form-field-input > input:focus,
+.contactus-form-field > textarea:focus {
+  border: 2px solid #fa949d;
+  outline: none;
+  color: #23244f;
+}
+
+.contactus-form-field-input input:focus + .contactus-form-field-input-icon {
+  color: #fa949d;
+}
+
+.contactus-form-field-input-icon {
+  position: absolute;
+  top: 50%;
+  left: 10px;
+  transform: translateY(-50%);
+}
+
+.contactus-submit-btn {
+  width: 300px;
+  padding: 10px 20px;
+
+  border: none;
+  background-color: #fa949d;
+  color: #ffffff;
+
+  border-radius: 5px;
+}
